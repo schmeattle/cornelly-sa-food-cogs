@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Cornelly Food COGS</title>
+<link rel="icon" href="data:image/png;base64,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" type="image/png" />
+<style>
+  @font-face {
+    font-family: "5thGradeCursive";
+    src: url("./5thgradecursive-2.ttf") format("truetype");
+    font-weight: normal; font-style: normal; font-display: swap;
+  }
+  :root {
+    --bg: #f5f7fb; --bg-2: #ffffff; --bg-3: #eef2f7;
+    --border: #d7dee8; --text: #1a2b3d; --text-2: #5a6e85; --text-3: #98a5b6;
+    --accent: #1a4d7e; --accent-2: #2e6298; --accent-dark: #143d65;
+    --good: #15803d; --bad: #b91c1c; --warn: #b45309;
+    --radius: 10px; --radius-sm: 6px;
+    --shadow-sm: 0 1px 2px rgba(20,40,65,.05); --shadow-md: 0 2px 8px rgba(20,40,65,.08);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  body { min-height: 100vh; padding-bottom: env(safe-area-inset-bottom); }
+
+  /* Header */
+  header { position: sticky; top: 0; background: var(--accent); color: white; border-bottom: 1px solid var(--accent-dark); padding: 0 24px; z-index: 10; box-shadow: var(--shadow-md); height: 80px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+  .header-brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .header-brand .brand-logo { height: 58px; width: auto; display: block; }
+  .header-brand .brand-sub { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.75); }
+  .save-indicator { font-size: 0.72rem; color: rgba(255,255,255,0.65); display: flex; align-items: center; gap: 5px; justify-content: flex-end; }
+  .save-indicator.saving { color: #ffd166; } .save-indicator.saved { color: #95e8b8; } .save-indicator.error { color: #ffb4b4; }
+  .save-indicator .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  nav { display: flex; gap: 2px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  nav::-webkit-scrollbar { display: none; }
+  nav button { flex: 0 0 auto; background: transparent; border: 0; color: rgba(255,255,255,0.7); padding: 8px 14px; font-size: 0.88rem; font-weight: 500; cursor: pointer; border-radius: var(--radius-sm); white-space: nowrap; transition: background .15s, color .15s; }
+  nav button:hover { color: white; background: rgba(255,255,255,0.1); }
+  nav button.active { color: #1a2b3d; background: #c9a84c; font-weight: 600; }
+
+  /* Layout */
+  main { padding: 16px; max-width: 960px; margin: 0 auto; }
+  .panel { display: none; } .panel.active { display: block; }
+  .empty { text-align: center; padding: 40px 20px; color: var(--text-3); font-size: 0.95rem; }
+  .row { display: flex; gap: 8px; align-items: center; }
+  .row.between { justify-content: space-between; }
+  .stack > * + * { margin-top: 8px; }
+
+  /* Buttons */
+  button.primary { background: var(--accent); color: white; border: 0; padding: 10px 16px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; cursor: pointer; }
+  button.primary:active { background: var(--accent-2); } button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+  button.secondary { background: var(--bg-3); color: var(--text); border: 1px solid var(--border); padding: 10px 16px; border-radius: var(--radius-sm); font-size: 0.9rem; cursor: pointer; }
+  button.danger { background: transparent; color: var(--bad); border: 1px solid var(--bad); padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.85rem; cursor: pointer; }
+  button.icon { background: transparent; color: var(--text-2); border: 0; padding: 6px; cursor: pointer; font-size: 1rem; line-height: 1; }
+  button.icon:hover { color: var(--text); }
+  button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 8px 14px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+
+  /* Inputs */
+  input, select, textarea { background: var(--bg-2); color: var(--text); border: 1px solid var(--border); padding: 10px 12px; border-radius: var(--radius-sm); font-size: 0.95rem; font-family: inherit; -webkit-appearance: none; appearance: none; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+  input[type="number"] { font-variant-numeric: tabular-nums; }
+  label { display: block; color: var(--text-2); font-size: 0.8rem; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; }
+
+  /* Cards */
+  .card { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow-sm); }
+  .card + .card { margin-top: 10px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+
+  /* Toolbar */
+  .toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .toolbar input[type="search"] { flex: 1 1 200px; }
+
+  /* Ingredient card */
+  .ing-card .name { font-weight: 600; font-size: 1rem; margin-bottom: 2px; }
+  .ing-card .meta { color: var(--text-2); font-size: 0.82rem; }
+  .ing-card .cat-pill { display: inline-block; padding: 1px 8px; border-radius: 999px; background: var(--bg-3); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 6px; }
+  .ing-card .prices { margin-top: 6px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .ing-card .price-item { font-size: 0.82rem; color: var(--text-2); }
+  .ing-card .price-item strong { color: var(--text); font-variant-numeric: tabular-nums; }
+
+  /* Recipe builder */
+  #builder-form { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-sm); }
+  .recipe-header-fields { display: grid; grid-template-columns: 1fr auto auto auto; gap: 10px; align-items: end; margin-bottom: 16px; }
+  .ing-row { display: grid; grid-template-columns: 1fr 80px 140px 70px 36px; gap: 6px; align-items: center; margin-bottom: 6px; }
+  .ing-row input, .ing-row select { width: 100%; }
+  .ing-row .row-cost { font-size: 0.82rem; font-variant-numeric: tabular-nums; color: var(--text-2); text-align: right; white-space: nowrap; }
+  .ing-row .row-cost.has-cost { color: var(--text); font-weight: 500; }
+  .ing-list-header { display: grid; grid-template-columns: 1fr 80px 140px 70px 36px; gap: 6px; margin-bottom: 4px; padding: 0 2px; }
+  .ing-list-header span { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-3); font-weight: 500; }
+  .cost-summary { background: var(--bg-3); border-radius: var(--radius-sm); padding: 14px; margin-top: 14px; }
+  .cost-summary .cost-row { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0; font-size: 0.9rem; }
+  .cost-summary .cost-row.total { font-weight: 700; font-size: 1rem; border-top: 1px solid var(--border); margin-top: 6px; padding-top: 10px; }
+  .cost-summary .cost-row.cogs-row { font-size: 0.85rem; color: var(--text-2); }
+  .cogs-good { color: var(--good); font-weight: 700; } .cogs-warn { color: var(--warn); font-weight: 700; } .cogs-bad { color: var(--bad); font-weight: 700; }
+
+  /* Autocomplete */
+  .ac-wrap { position: relative; }
+  .ac-drop { position: absolute; top: 100%; left: 0; right: 0; background: var(--bg-2); border: 1px solid var(--border); border-top: 0; border-radius: 0 0 var(--radius-sm) var(--radius-sm); z-index: 50; max-height: 420px; overflow-y: auto; box-shadow: var(--shadow-md); }
+  .ac-item { padding: 8px 12px; cursor: pointer; font-size: 0.9rem; }
+  .ac-item:hover, .ac-item.active { background: var(--bg-3); }
+  .ac-item .ac-sub { font-size: 0.75rem; color: var(--text-3); }
+
+  /* Recipe inventory cards */
+  .recipe-card .rname { font-weight: 600; font-size: 1rem; }
+  .recipe-card .rmeta { font-size: 0.82rem; color: var(--text-2); margin-top: 2px; }
+  .recipe-card .rtags { margin-top: 6px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .recipe-card .rtag { font-size: 0.78rem; background: var(--bg-3); padding: 2px 10px; border-radius: 999px; color: var(--text-2); }
+  .recipe-card .rtag.cogs-good { background: #dcfce7; color: var(--good); } .recipe-card .rtag.cogs-warn { background: #fef3c7; color: var(--warn); } .recipe-card .rtag.cogs-bad { background: #fee2e2; color: var(--bad); }
+
+  /* Stat grid */
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 480px) { .stat-grid { grid-template-columns: 1fr 1fr; } }
+  .stat { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }
+  .stat .label { color: var(--text-2); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .stat .value { font-size: 1.4rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+  /* Modal */
+  .modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,.7); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 100; }
+  .modal-bg.show { display: flex; }
+  .modal { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: 0 12px 40px rgba(20,40,65,.25); }
+  .modal h2 { margin: 0 0 16px; font-size: 1.1rem; }
+  .modal .field + .field { margin-top: 12px; }
+  .modal .field input, .modal .field select, .modal .field textarea { width: 100%; }
+  .modal .actions { display: flex; gap: 8px; margin-top: 18px; }
+  .modal .actions button { flex: 1; }
+
+  /* Toast */
+  .toast-msg { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; padding: 10px 18px; border-radius: var(--radius-sm); font-size: 0.9rem; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 200; box-shadow: 0 4px 16px rgba(20,40,65,.25); }
+  .toast-msg.show { opacity: 1; }
+
+  /* Login */
+  .login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); }
+  .login-box { width: 100%; max-width: 360px; background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 28px; box-shadow: 0 12px 40px rgba(0,0,0,.25); }
+  .login-box h1 { margin: 0 0 14px; font-size: 1.5rem; font-weight: 600; color: var(--text); text-align: center; }
+  .login-box h1 .accent { color: var(--accent); font-family: "5thGradeCursive", cursive; font-weight: 400; font-size: 2.2em; line-height: 1; display: block; margin-bottom: 4px; }
+  .login-box h1 .subtitle { display: block; font-size: 0.8em; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); }
+  .login-box p { color: var(--text-2); font-size: 0.9rem; margin: 0 0 22px; }
+  .login-box input { width: 100%; margin-bottom: 14px; }
+  .login-box button { width: 100%; padding: 12px; font-size: 1rem; }
+  .login-error { color: var(--bad); font-size: 0.85rem; margin-top: 10px; min-height: 1em; }
+  .loading { text-align: center; padding: 60px 20px; color: var(--text-3); }
+
+  hr { border: 0; border-top: 1px solid var(--border); margin: 16px 0; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #invoice-upload-area:hover { border-color: var(--accent); background: var(--bg-3); }
+  #invoice-upload-area.drag-over { border-color: var(--accent); background: var(--bg-3); }
+  .inv-row td { padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .inv-row input[type="text"], .inv-row input[type="number"], .inv-row select { width: 100%; padding: 4px 6px; font-size: 0.82rem; border: 1px solid transparent; border-radius: 4px; background: transparent; }
+  .inv-row input[type="text"]:focus, .inv-row input[type="number"]:focus, .inv-row select:focus { border-color: var(--accent); background: var(--bg-2); outline: none; }
+  .inv-row.will-update td:nth-child(2)::after { content: " ↻ update"; font-size: 0.7rem; color: var(--accent); margin-left: 4px; }
+  .price-history { margin-top: 6px; }
+  .price-history summary { font-size: 0.78rem; color: var(--text-3); cursor: pointer; user-select: none; }
+  .price-history summary:hover { color: var(--text-2); }
+  .price-history-table { width: 100%; font-size: 0.78rem; margin-top: 4px; border-collapse: collapse; }
+  .price-history-table td { padding: 2px 6px; color: var(--text-2); border-bottom: 1px solid var(--border); }
+  .price-history-table td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+
+  @media (min-width: 768px) {
+    main { padding: 24px; }
+    nav button { padding: 12px 18px; font-size: 0.95rem; }
+  }
+  @media (max-width: 600px) {
+    .recipe-header-fields { grid-template-columns: 1fr 1fr; }
+    .ing-row { grid-template-columns: 1fr 60px 100px 52px 28px; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    header { padding: 0 12px; }
+    .header-brand .brand-sub { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="loading-screen" class="loading" style="display:none;">Loading…</div>
+
+<!-- APP -->
+<div id="app">
+  <header>
+    <div class="header-brand">
+      <img src="data:image/png;base64,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" alt="Cornelly" style="height:40px;width:auto;display:block;" />
+      <span class="brand-sub">Food COGS Calculator</span>
+    </div>
+    <nav id="nav">
+      <button data-tab="builder" class="active">Build Recipe</button>
+      <button data-tab="inhouse">In-House</button>
+      <button data-tab="ingredients">Ingredients</button>
+      <button data-tab="recipes">Recipe Inventory</button>
+      <button data-tab="invoice">Invoice Upload</button>
+    </nav>
+    <div style="display:flex;justify-content:flex-end;align-items:center;">
+      <a href="https://cornelly-sa-dashboard.netlify.app" style="display:inline-block;padding:0.2rem 0.7rem;border:1.5px solid rgba(255,255,255,0.45);border-radius:20px;color:#fff;text-decoration:none;font-size:0.72rem;font-weight:600;letter-spacing:0.03em;transition:background 0.15s,border-color 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.15)';this.style.borderColor='#fff'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(255,255,255,0.45)'">Return to Dashboard</a>
+    </div>
+    <div class="save-indicator" id="save-indicator"></div>
+  </header>
+
+  <main>
+    <!-- BUILD RECIPE -->
+    <section id="tab-builder" class="panel active">
+      <div id="builder-form">
+        <div class="recipe-header-fields">
+          <div class="field">
+            <label>Recipe Name</label>
+            <input type="text" id="recipe-name" placeholder="e.g. Cacio e Pepe" style="width:100%;" />
+          </div>
+          <div class="field">
+            <label>Menu Price ($)</label>
+            <input type="number" id="recipe-price" placeholder="18.00" step="0.01" min="0" style="width:100%;" />
+          </div>
+          <div class="field">
+            <label>Target COGS %</label>
+            <input type="number" id="recipe-target-cogs" value="28" min="1" max="100" style="width:100%;" />
+          </div>
+          <div class="field">
+            <label>Portions</label>
+            <input type="number" id="recipe-portions" value="1" min="1" style="width:100%;" />
+          </div>
+        </div>
+
+        <div class="ing-list-header">
+          <span>Ingredient</span>
+          <span>Qty</span>
+          <span>Unit</span>
+          <span style="text-align:right;">Cost</span>
+          <span></span>
+        </div>
+        <div id="ing-rows"></div>
+        <button class="ghost" id="add-ing-row" style="margin-top:8px; width:100%;">+ Add Ingredient</button>
+
+        <div class="cost-summary" id="cost-summary">
+          <div class="cost-row"><span>Recipe Cost</span><span id="cs-recipe-cost">—</span></div>
+          <div class="cost-row"><span>Cost per Portion</span><span id="cs-portion-cost">—</span></div>
+          <div class="cost-row cogs-row">
+            <span>COGS %</span>
+            <span id="cs-cogs">—</span>
+          </div>
+          <div class="cost-row total">
+            <span>Gross Profit (per portion)</span>
+            <span id="cs-gp">—</span>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+          <button class="primary" id="save-recipe-btn">✓ Save to Inventory</button>
+          <button class="secondary" id="clear-builder-btn">Clear</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- INGREDIENTS -->
+    <section id="tab-ingredients" class="panel">
+      <div class="toolbar">
+        <input type="search" id="ing-search" placeholder="Search ingredients…" />
+        <select id="ing-cat-filter">
+          <option value="">All categories</option>
+        </select>
+        <select id="ing-vendor-filter">
+          <option value="">All vendors</option>
+        </select>
+        <select id="ing-sort">
+          <option value="name">Sort: Name</option>
+          <option value="vendor">Sort: Vendor</option>
+          <option value="category">Sort: Category</option>
+        </select>
+        <button class="primary" id="add-ing-btn">+ Add Ingredient</button>
+      </div>
+      <div id="ingredients-list" class="stack"></div>
+    </section>
+
+    <!-- IN-HOUSE -->
+    <section id="tab-inhouse" class="panel">
+      <div id="inhouse-form" style="background:var(--bg-2); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow-sm); margin-bottom:16px;">
+        <div style="display:grid; grid-template-columns:1fr 90px 160px; gap:10px; align-items:end; margin-bottom:16px;">
+          <div class="field">
+            <label>Prep Name</label>
+            <input type="text" id="ih-name" placeholder="e.g. Pasta Dough" style="width:100%;" />
+          </div>
+          <div class="field">
+            <label>Yield Qty</label>
+            <input type="number" id="ih-yield-qty" placeholder="5" step="any" min="0" style="width:100%;" />
+          </div>
+          <div class="field">
+            <label>Yield Unit</label>
+            <select id="ih-yield-unit" style="width:100%;">
+              <option value="lb">lb</option>
+              <option value="oz_dry">oz</option>
+              <option value="kg">kg</option>
+              <option value="g">g</option>
+              <option value="l">liter</option>
+              <option value="ml">ml</option>
+              <option value="fl_oz">fl oz</option>
+              <option value="gal">gal</option>
+              <option value="each">each</option>
+            </select>
+          </div>
+        </div>
+        <div class="ing-list-header">
+          <span>Ingredient</span><span>Qty</span><span>Unit</span><span></span>
+        </div>
+        <div id="ih-ing-rows"></div>
+        <button class="ghost" id="ih-add-row" style="margin-top:8px; width:100%;">+ Add Ingredient</button>
+        <div class="cost-summary" id="ih-cost-summary" style="margin-top:14px;">
+          <div class="cost-row"><span>Total Batch Cost</span><span id="ih-total-cost">—</span></div>
+          <div class="cost-row"><span id="ih-cpp-label">Cost per lb</span><span id="ih-cpp">—</span></div>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+          <button class="primary" id="ih-save-btn">✓ Save &amp; Add to Ingredients</button>
+          <button class="secondary" id="ih-clear-btn">Clear</button>
+        </div>
+      </div>
+      <h3 style="margin:0 0 10px; font-size:0.9rem; color:var(--text-2); text-transform:uppercase; letter-spacing:.05em;">Saved Preps</h3>
+      <div id="inhouse-list" class="stack"></div>
+    </section>
+
+    <!-- INVOICE UPLOAD -->
+    <section id="tab-invoice" class="panel">
+      <div id="invoice-upload-area" class="card" style="border:2px dashed var(--border); border-radius:var(--radius); padding:40px 20px; text-align:center; cursor:pointer; transition:border-color .2s, background .2s;">
+        <div style="font-size:2.5rem; margin-bottom:12px;">📄</div>
+        <div style="font-weight:600; font-size:1rem; margin-bottom:6px;">Drop invoice here or click to select</div>
+        <div style="color:var(--text-3); font-size:0.85rem;">Supports photos (JPG, PNG, HEIC) and PDFs</div>
+        <input type="file" id="invoice-file-input" accept="image/*,application/pdf" style="display:none;" />
+      </div>
+
+      <div id="invoice-processing" style="display:none; text-align:center; padding:40px 20px;">
+        <div style="font-size:2rem; margin-bottom:12px; animation:spin 1s linear infinite; display:inline-block;">⏳</div>
+        <div style="font-weight:600; margin-bottom:4px;">Scanning invoice…</div>
+        <div style="color:var(--text-2); font-size:0.85rem;" id="invoice-processing-msg">Reading with Claude vision</div>
+      </div>
+
+      <div id="invoice-results" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+          <div>
+            <div style="font-weight:600; font-size:1rem;" id="invoice-result-title">Extracted Ingredients</div>
+            <div style="font-size:0.82rem; color:var(--text-2);" id="invoice-result-sub"></div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="secondary" id="invoice-reset-btn">Upload Another</button>
+            <button class="primary" id="invoice-add-btn">✓ Add Selected to Database</button>
+          </div>
+        </div>
+        <div class="card" style="padding:0; overflow-x:auto;">
+          <table id="invoice-table" style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border);">
+                <th style="padding:8px; width:32px;"><input type="checkbox" id="invoice-check-all" checked /></th>
+                <th style="padding:8px; text-align:left; color:var(--text-2); font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em;">Name</th>
+                <th style="padding:8px; text-align:left; color:var(--text-2); font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em;">Category</th>
+                <th style="padding:8px; text-align:left; color:var(--text-2); font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em;">Vendor</th>
+                <th style="padding:8px; text-align:right; color:var(--text-2); font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em;">Qty</th>
+                <th style="padding:8px; text-align:left; color:var(--text-2); font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em;">Unit</th>
+                <th style="padding:8px; text-align:right; color:var(--text-2); font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em;">Cost ($)</th>
+                <th style="padding:8px; text-align:right; color:var(--text-2); font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em;">Yield %</th>
+                <th style="padding:8px; text-align:left; color:var(--text-2); font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em;">Notes</th>
+              </tr>
+            </thead>
+            <tbody id="invoice-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="invoice-error" style="display:none;" class="card">
+        <div style="color:var(--bad); font-weight:600; margin-bottom:6px;">⚠ Scan failed</div>
+        <div style="color:var(--text-2); font-size:0.875rem;" id="invoice-error-msg"></div>
+        <button class="secondary" style="margin-top:12px;" id="invoice-error-reset">Try Again</button>
+      </div>
+    </section>
+
+    <!-- RECIPE INVENTORY -->
+    <section id="tab-recipes" class="panel">
+      <div class="stat-grid" id="inv-stats"></div>
+      <div class="toolbar">
+        <input type="search" id="recipe-search" placeholder="Search recipes…" />
+      </div>
+      <div id="recipes-list" class="stack"></div>
+    </section>
+  </main>
+</div>
+
+<!-- INGREDIENT MODAL -->
+<div class="modal-bg" id="ing-modal-bg">
+  <div class="modal">
+    <h2 id="ing-modal-title">Add Ingredient</h2>
+    <div class="field">
+      <label>Name</label>
+      <input type="text" id="im-name" placeholder="e.g. 00 Flour" />
+    </div>
+    <div class="field">
+      <label>Category</label>
+      <select id="im-category" style="width:100%;">
+        <option value="">-- select or type below --</option>
+      </select>
+      <input type="text" id="im-category-custom" placeholder="Or type a new category…" style="width:100%; margin-top:6px; display:none;" />
+    </div>
+    <div class="field">
+      <label>Vendor / Notes</label>
+      <input type="text" id="im-vendor" placeholder="e.g. Merlino Foods" />
+    </div>
+    <hr />
+    <p style="font-size:0.82rem; color:var(--text-2); margin:0 0 10px;">
+      Enter how this ingredient is purchased — the site converts everything else automatically.
+    </p>
+    <div class="grid-2">
+      <div class="field">
+        <label>Purchase Qty</label>
+        <input type="number" id="im-pur-qty" placeholder="e.g. 50" step="any" min="0" />
+      </div>
+      <div class="field">
+        <label>Purchase Unit</label>
+        <select id="im-pur-unit">
+          <option value="lb">lb (pound)</option>
+          <option value="oz_dry">oz (dry weight)</option>
+          <option value="kg">kg</option>
+          <option value="g">g (gram)</option>
+          <option value="fl_oz">fl oz</option>
+          <option value="ml">ml</option>
+          <option value="l">liter</option>
+          <option value="gal">gallon</option>
+          <option value="each">each / unit</option>
+          <option value="case">case (specify qty below)</option>
+        </select>
+      </div>
+    </div>
+    <div class="field" id="case-qty-field" style="display:none;">
+      <label>Units per Case</label>
+      <input type="number" id="im-case-qty" placeholder="e.g. 6" min="1" step="1" />
+    </div>
+    <div class="field" id="case-unit-field" style="display:none;">
+      <label>Unit size per item in case</label>
+      <div style="display:flex; gap:8px;">
+        <input type="number" id="im-case-item-qty" placeholder="28" step="any" min="0" style="flex:1;" />
+        <select id="im-case-item-unit" style="flex:1;">
+          <option value="oz_dry">oz (dry)</option>
+          <option value="fl_oz">fl oz</option>
+          <option value="lb">lb</option>
+          <option value="g">g</option>
+          <option value="ml">ml</option>
+          <option value="l">liter</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:10px;">
+      <div class="field">
+        <label>Purchase Cost ($)</label>
+        <input type="number" id="im-cost" placeholder="0.00" step="0.01" min="0" />
+      </div>
+      <div class="field">
+        <label>Yield %</label>
+        <input type="number" id="im-yield" placeholder="100" value="100" min="1" max="100" />
+      </div>
+    </div>
+    <div id="im-derived" style="background:var(--bg-3); border-radius:var(--radius-sm); padding:10px 12px; margin-top:10px; font-size:0.82rem; color:var(--text-2); min-height:36px;"></div>
+    <div class="actions">
+      <button class="secondary" id="im-cancel">Cancel</button>
+      <button class="primary" id="im-save">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE DETAIL MODAL -->
+<div class="modal-bg" id="recipe-modal-bg">
+  <div class="modal" style="max-width:620px;">
+    <h2 id="recipe-modal-title">Recipe Detail</h2>
+    <div id="recipe-modal-body"></div>
+    <div class="actions" style="margin-top:14px;">
+      <button class="secondary" id="rm-edit">Edit / Load</button>
+      <button class="danger" id="rm-delete">Delete</button>
+      <button class="secondary" id="rm-close">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-msg" id="toast"></div>
+
+<script>
+"use strict";
+
+// ── Unit conversion ──────────────────────────────────────────────────────────
+// All weights stored internally in grams, volumes in ml, each=each.
+// "case" is resolved at entry time to a base unit.
+
+const UNIT_LABELS = {
+  g: "g", kg: "kg", lb: "lb", oz_dry: "oz", oz: "oz (wet)", fl_oz: "fl oz", ml: "ml", l: "l", gal: "gal", each: "each"
+};
+
+// Returns grams (weight) or ml (volume) or count for "each"
+function toBase(qty, unit) {
+  switch (unit) {
+    case "g":      return { val: qty, type: "weight" };
+    case "kg":     return { val: qty * 1000, type: "weight" };
+    case "lb":     return { val: qty * 453.592, type: "weight" };
+    case "oz_dry": return { val: qty * 28.3495, type: "weight" };
+    case "ml":     return { val: qty, type: "volume" };
+    case "l":      return { val: qty * 1000, type: "volume" };
+    case "fl_oz":  return { val: qty * 29.5735, type: "volume" };
+    case "gal":    return { val: qty * 3785.41, type: "volume" };
+    case "each":   return { val: qty, type: "each" };
+    default:       return { val: qty, type: "each" };
+  }
+}
+
+function fromBase(baseVal, baseType, unit) {
+  if (baseType === "each" || unit === "each") return baseVal;
+  if (baseType === "weight") {
+    switch (unit) {
+      case "g":      return baseVal;
+      case "kg":     return baseVal / 1000;
+      case "lb":     return baseVal / 453.592;
+      case "oz_dry": return baseVal / 28.3495;
+      default: return null; // cross-type
+    }
+  }
+  if (baseType === "volume") {
+    switch (unit) {
+      case "ml":    return baseVal;
+      case "l":     return baseVal / 1000;
+      case "fl_oz": return baseVal / 29.5735;
+      case "gal":   return baseVal / 3785.41;
+      default: return null;
+    }
+  }
+  return null;
+}
+
+// Recipe row units (what a chef thinks in)
+const RECIPE_UNITS = [
+  { value: "g",      label: "g" },
+  { value: "kg",     label: "kg" },
+  { value: "lb",     label: "lb" },
+  { value: "oz_dry", label: "oz" },
+  { value: "ml",     label: "ml" },
+  { value: "l",      label: "l" },
+  { value: "fl_oz",  label: "fl oz" },
+  { value: "gal",    label: "gal" },
+  { value: "each",   label: "each" },
+];
+
+// ── Storage (GitHub as shared backend) ───────────────────────────────────────
+function localGet() { try { return JSON.parse(localStorage.getItem("fc_state") || "null"); } catch { return null; } }
+
+const API = {
+  async getData() {
+    try {
+      const r = await fetch("/api/data", { cache: "no-store" });
+      if (r.ok) {
+        const data = await r.json();
+        localStorage.setItem("fc_state", JSON.stringify(data));
+        return data;
+      }
+    } catch {}
+    return localGet();
+  },
+  async saveData(s) {
+    localStorage.setItem("fc_state", JSON.stringify(s));
+    try {
+      await fetch("/api/data", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(s) });
+    } catch {}
+  },
+};
+
+let state = { ingredients: [], recipes: [], inHousePreps: [] };
+let saveTimer = null, saveStatus = "idle", lastInteractAt = 0;
+
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c])); }
+
+function fmt$(n) { const v = Number(n) || 0; return (v < 0 ? "-$" : "$") + Math.abs(v).toFixed(2); }
+function fmtPct(n) { return (Number(n) || 0).toFixed(1) + "%"; }
+
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg; t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2200);
+}
+
+function setSaveStatus(s) {
+  saveStatus = s;
+  const el = document.getElementById("save-indicator");
+  el.className = "save-indicator " + s;
+  el.innerHTML = { idle: "", pending: '<span class="dot"></span>Pending…', saving: '<span class="dot"></span>Saving…', saved: '<span class="dot"></span>Saved', error: '<span class="dot"></span>Save failed' }[s] || "";
+}
+
+function scheduleSave() {
+  setSaveStatus("pending"); lastInteractAt = Date.now();
+  clearTimeout(saveTimer); saveTimer = setTimeout(doSave, 800);
+}
+
+async function doSave() {
+  setSaveStatus("saving");
+  try {
+    await API.saveData(state);
+    setSaveStatus("saved");
+    setTimeout(() => { if (saveStatus === "saved" && Date.now() - lastInteractAt > 1500) setSaveStatus("idle"); }, 2500);
+  } catch (e) {
+    setSaveStatus("error");
+  }
+}
+
+async function loadAndStart() {
+  document.getElementById("loading-screen").style.display = "none";
+  document.getElementById("app").style.display = "block";
+  const data = await API.getData();
+  state = Object.assign({ ingredients: [], recipes: [], inHousePreps: [] }, data || {});
+  renderIngredients();
+  renderRecipes();
+  renderInHouseList();
+  rebuildBuilder();
+  ihAddRow();
+  populateCatFilter();
+  // Restore tab from URL hash
+  const hash = location.hash.replace("#", "");
+  const valid = ["builder","inhouse","ingredients","recipes"];
+  if (hash && valid.includes(hash)) activateTab(hash);
+}
+
+// ── Nav ──────────────────────────────────────────────────────────────────────
+function activateTab(tab) {
+  document.querySelectorAll("#nav button").forEach(b => b.classList.toggle("active", b.dataset.tab === tab));
+  document.querySelectorAll(".panel").forEach(p => p.classList.toggle("active", p.id === "tab-" + tab));
+  if (tab === "ingredients") { renderIngredients(); populateCatFilter(); }
+  if (tab === "recipes") renderRecipes();
+  if (tab === "inhouse") renderInHouseList();
+  if (tab === "invoice") invReset();
+}
+
+document.querySelectorAll("#nav button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const tab = btn.dataset.tab;
+    location.hash = tab;
+    activateTab(tab);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
+
+window.addEventListener("hashchange", () => {
+  const tab = location.hash.replace("#", "") || "builder";
+  const valid = ["builder","inhouse","ingredients","recipes"];
+  if (valid.includes(tab)) activateTab(tab);
+});
+
+// ── Ingredient helpers ───────────────────────────────────────────────────────
+
+// Returns cost per gram or ml or per-each, accounting for yield
+function costPerBase(ing) {
+  const { purchaseQty, purchaseUnit, purchaseCost, yieldPct, caseQty, caseItemQty, caseItemUnit } = ing;
+  const cost = Number(purchaseCost) || 0;
+  const yld = (Number(yieldPct) || 100) / 100;
+  if (purchaseUnit === "case") {
+    // Resolve case to a base unit
+    const totalItems = Number(caseQty) || 1;
+    const itemQty = Number(caseItemQty) || 1;
+    const base = toBase(totalItems * itemQty, caseItemUnit || "oz_dry");
+    if (base.val === 0) return null;
+    return { cpb: cost / (base.val * yld), type: base.type };
+  }
+  const base = toBase(Number(purchaseQty) || 0, purchaseUnit);
+  if (base.val === 0) return null;
+  return { cpb: cost / (base.val * yld), type: base.type };
+}
+
+// Cost for a recipe row {ingId, qty, unit}
+function rowCost(row) {
+  const ing = state.ingredients.find(i => i.id === row.ingId);
+  if (!ing) return null;
+  const cpbObj = costPerBase(ing);
+  if (!cpbObj) return null;
+  const used = toBase(Number(row.qty) || 0, row.unit);
+  if (used.type !== cpbObj.type && used.type !== "each" && cpbObj.type !== "each") return null;
+  if (used.type === "each" || cpbObj.type === "each") {
+    // price per each
+    const purchaseBase = toBase(Number(ing.purchaseQty) || 1, ing.purchaseUnit);
+    const costEach = (Number(ing.purchaseCost) || 0) / (purchaseBase.val || 1);
+    return (Number(row.qty) || 0) * costEach;
+  }
+  return used.val * cpbObj.cpb;
+}
+
+function describeUnit(ing) {
+  if (!ing) return "";
+  const cpbObj = costPerBase(ing);
+  if (!cpbObj) return "—";
+  const { cpb, type } = cpbObj;
+  if (type === "weight") {
+    return `$${(cpb * 28.3495).toFixed(2)}/oz · $${(cpb * 453.592).toFixed(2)}/lb · $${(cpb).toFixed(2)}/g`;
+  }
+  if (type === "volume") {
+    return `$${(cpb * 29.5735).toFixed(2)}/fl oz · $${(cpb * 1000).toFixed(2)}/l · $${(cpb).toFixed(2)}/ml`;
+  }
+  return `$${(Number(ing.purchaseCost) / (Number(ing.purchaseQty) || 1)).toFixed(2)}/each`;
+}
+
+// ── Ingredient list ──────────────────────────────────────────────────────────
+function allCategories() {
+  return [...new Set(state.ingredients.map(i => i.category || "").filter(Boolean))].sort();
+}
+
+function populateCatFilter() {
+  const sel = document.getElementById("ing-cat-filter");
+  const val = sel.value;
+  const cats = allCategories();
+  sel.innerHTML = '<option value="">All categories</option>' + cats.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join("");
+  sel.value = val;
+
+  const vsel = document.getElementById("ing-vendor-filter");
+  const vval = vsel.value;
+  const vendors = [...new Set(state.ingredients.map(i => i.vendor || "").filter(Boolean))].sort();
+  vsel.innerHTML = '<option value="">All vendors</option>' + vendors.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join("");
+  vsel.value = vval;
+
+  // Populate modal category select
+  const msel = document.getElementById("im-category");
+  if (msel) {
+    const cur = msel.value;
+    msel.innerHTML = '<option value="">-- select --</option>' +
+      cats.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join("") +
+      '<option value="__new__">+ New category…</option>';
+    if (cur && cats.includes(cur)) msel.value = cur;
+  }
+}
+
+// Show/hide custom category input
+document.getElementById("im-category").addEventListener("change", function() {
+  const custom = document.getElementById("im-category-custom");
+  if (this.value === "__new__") {
+    custom.style.display = "";
+    custom.focus();
+  } else {
+    custom.style.display = "none";
+    custom.value = "";
+  }
+});
+
+function renderIngredients() {
+  const list = document.getElementById("ingredients-list");
+  const search = (document.getElementById("ing-search").value || "").toLowerCase();
+  const cat = document.getElementById("ing-cat-filter").value;
+  const vendor = document.getElementById("ing-vendor-filter").value;
+  const sort = document.getElementById("ing-sort").value;
+  const filtered = state.ingredients.filter(i =>
+    i.name.toLowerCase().includes(search) &&
+    (!cat || (i.category || "") === cat) &&
+    (!vendor || (i.vendor || "") === vendor)
+  ).sort((a, b) => {
+    if (sort === "vendor") return (a.vendor || "").localeCompare(b.vendor || "") || a.name.localeCompare(b.name);
+    if (sort === "category") return (a.category || "").localeCompare(b.category || "") || a.name.localeCompare(b.name);
+    return a.name.localeCompare(b.name);
+  });
+
+  if (filtered.length === 0) {
+    list.innerHTML = state.ingredients.length === 0
+      ? '<div class="empty">No ingredients yet. Tap <strong>+ Add Ingredient</strong> to get started.</div>'
+      : '<div class="empty">No ingredients match your search.</div>';
+    return;
+  }
+  list.innerHTML = filtered.map(ing => {
+    const pu = ing.purchaseUnit === "case"
+      ? `Case of ${ing.caseQty || "?"} × ${ing.caseItemQty || "?"}${ing.caseItemUnit ? " " + (UNIT_LABELS[ing.caseItemUnit] || ing.caseItemUnit) : ""}`
+      : `${ing.purchaseQty} ${UNIT_LABELS[ing.purchaseUnit] || ing.purchaseUnit}`;
+    return `
+      <div class="card ing-card">
+        <div class="row between">
+          <div style="flex:1; min-width:0;">
+            <div class="name">${esc(ing.name)}</div>
+            <div class="meta">
+              ${ing.category ? `<span class="cat-pill">${esc(ing.category)}</span>` : ""}
+              ${ing.vendor ? esc(ing.vendor) + " · " : ""}${pu} @ ${fmt$(ing.purchaseCost)}
+              ${Number(ing.yieldPct) && Number(ing.yieldPct) !== 100 ? ` · ${ing.yieldPct}% yield` : ""}
+            </div>
+            <div class="prices">
+              <div class="price-item">Unit cost: <strong>${describeUnit(ing)}</strong></div>
+            </div>
+            ${ing.invoiceDate ? `<div style="font-size:0.75rem; color:var(--text-3); margin-top:3px;">Last updated: ${ing.invoiceDate}</div>` : ""}
+            ${(ing.priceHistory?.length) ? `
+            <details class="price-history">
+              <summary>${ing.priceHistory.length} previous price${ing.priceHistory.length === 1 ? "" : "s"}</summary>
+              <table class="price-history-table">
+                ${ing.priceHistory.map(h => `<tr>
+                  <td>${h.invoiceDate || "—"}</td>
+                  <td>${esc(h.vendor || "")}</td>
+                  <td>${h.purchaseQty} ${UNIT_LABELS[h.purchaseUnit] || h.purchaseUnit}</td>
+                  <td>${fmt$(h.purchaseCost)}</td>
+                </tr>`).join("")}
+              </table>
+            </details>` : ""}
+          </div>
+          <div style="display:flex; gap:4px; flex-shrink:0;">
+            <button class="icon" data-edit-ing="${ing.id}" aria-label="Edit">✎</button>
+            <button class="icon" data-del-ing="${ing.id}" aria-label="Delete">✕</button>
+          </div>
+        </div>
+      </div>`;
+  }).join("");
+  list.querySelectorAll("[data-edit-ing]").forEach(b => b.addEventListener("click", () => openIngModal(b.dataset.editIng)));
+  list.querySelectorAll("[data-del-ing]").forEach(b => b.addEventListener("click", () => deleteIng(b.dataset.delIng)));
+}
+document.getElementById("ing-search").addEventListener("input", renderIngredients);
+document.getElementById("ing-cat-filter").addEventListener("change", renderIngredients);
+document.getElementById("ing-vendor-filter").addEventListener("change", renderIngredients);
+document.getElementById("ing-sort").addEventListener("change", renderIngredients);
+document.getElementById("add-ing-btn").addEventListener("click", () => openIngModal());
+
+function deleteIng(id) {
+  const ing = state.ingredients.find(i => i.id === id);
+  if (!ing || !confirm(`Delete "${ing.name}"?`)) return;
+  state.ingredients = state.ingredients.filter(i => i.id !== id);
+  scheduleSave(); renderIngredients(); populateCatFilter();
+  showToast("Ingredient deleted");
+}
+
+// ── Ingredient Modal ─────────────────────────────────────────────────────────
+let editingIngId = null;
+
+function openIngModal(id) {
+  editingIngId = id || null;
+  document.getElementById("ing-modal-title").textContent = id ? "Edit Ingredient" : "Add Ingredient";
+  const ing = id ? state.ingredients.find(i => i.id === id) : null;
+  document.getElementById("im-name").value = ing?.name || "";
+  populateCatFilter();
+  const catSel = document.getElementById("im-category");
+  const catCustom = document.getElementById("im-category-custom");
+  const existingCat = ing?.category || "";
+  const cats = allCategories();
+  if (!existingCat || cats.includes(existingCat)) {
+    catSel.value = existingCat;
+    catCustom.style.display = "none";
+    catCustom.value = "";
+  } else {
+    // Category exists on ingredient but not in list yet — add it
+    catSel.innerHTML += `<option value="${esc(existingCat)}">${esc(existingCat)}</option>`;
+    catSel.value = existingCat;
+    catCustom.style.display = "none";
+  }
+  document.getElementById("im-vendor").value = ing?.vendor || "";
+  document.getElementById("im-pur-qty").value = ing?.purchaseQty ?? "";
+  document.getElementById("im-pur-unit").value = ing?.purchaseUnit || "lb";
+  document.getElementById("im-case-qty").value = ing?.caseQty ?? "";
+  document.getElementById("im-case-item-qty").value = ing?.caseItemQty ?? "";
+  document.getElementById("im-case-item-unit").value = ing?.caseItemUnit || "oz_dry";
+  document.getElementById("im-cost").value = ing?.purchaseCost ?? "";
+  document.getElementById("im-yield").value = ing?.yieldPct ?? 100;
+  toggleCaseFields(document.getElementById("im-pur-unit").value);
+  updateDerived();
+  populateCatFilter();
+  document.getElementById("ing-modal-bg").classList.add("show");
+  setTimeout(() => document.getElementById("im-name").focus(), 50);
+}
+
+function closeIngModal() {
+  document.getElementById("ing-modal-bg").classList.remove("show");
+  editingIngId = null;
+}
+
+function toggleCaseFields(unit) {
+  const show = unit === "case";
+  document.getElementById("case-qty-field").style.display = show ? "" : "none";
+  document.getElementById("case-unit-field").style.display = show ? "" : "none";
+}
+
+function updateDerived() {
+  const unit = document.getElementById("im-pur-unit").value;
+  const qty = parseFloat(document.getElementById("im-pur-qty").value) || 0;
+  const cost = parseFloat(document.getElementById("im-cost").value) || 0;
+  const yld = (parseFloat(document.getElementById("im-yield").value) || 100) / 100;
+  const caseQty = parseInt(document.getElementById("im-case-qty").value) || 1;
+  const caseItemQty = parseFloat(document.getElementById("im-case-item-qty").value) || 0;
+  const caseItemUnit = document.getElementById("im-case-item-unit").value;
+  const el = document.getElementById("im-derived");
+
+  const fakeing = { purchaseQty: qty, purchaseUnit: unit, purchaseCost: cost, yieldPct: yld * 100, caseQty, caseItemQty, caseItemUnit };
+  if (qty > 0 && cost > 0) {
+    el.textContent = "→ " + describeUnit(fakeing);
+  } else {
+    el.textContent = "";
+  }
+}
+
+document.getElementById("im-pur-unit").addEventListener("change", e => { toggleCaseFields(e.target.value); updateDerived(); });
+["im-pur-qty","im-cost","im-yield","im-case-qty","im-case-item-qty","im-case-item-unit"].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener("input", updateDerived);
+});
+
+document.getElementById("im-cancel").addEventListener("click", closeIngModal);
+document.getElementById("ing-modal-bg").addEventListener("click", e => { if (e.target === document.getElementById("ing-modal-bg")) closeIngModal(); });
+
+document.getElementById("im-save").addEventListener("click", () => {
+  const name = document.getElementById("im-name").value.trim();
+  if (!name) { alert("Name is required."); return; }
+  const obj = {
+    id: editingIngId || uid(),
+    name,
+    category: (document.getElementById("im-category").value === "__new__"
+      ? document.getElementById("im-category-custom").value.trim()
+      : document.getElementById("im-category").value.trim()),
+    vendor: document.getElementById("im-vendor").value.trim(),
+    purchaseQty: parseFloat(document.getElementById("im-pur-qty").value) || 0,
+    purchaseUnit: document.getElementById("im-pur-unit").value,
+    caseQty: parseInt(document.getElementById("im-case-qty").value) || null,
+    caseItemQty: parseFloat(document.getElementById("im-case-item-qty").value) || null,
+    caseItemUnit: document.getElementById("im-case-item-unit").value,
+    purchaseCost: parseFloat(document.getElementById("im-cost").value) || 0,
+    yieldPct: parseFloat(document.getElementById("im-yield").value) || 100,
+  };
+  if (editingIngId) {
+    const idx = state.ingredients.findIndex(i => i.id === editingIngId);
+    if (idx >= 0) state.ingredients[idx] = obj;
+  } else {
+    state.ingredients.push(obj);
+  }
+  scheduleSave();
+  closeIngModal();
+  renderIngredients();
+  populateCatFilter();
+  showToast(editingIngId ? "Ingredient updated" : "Ingredient added");
+});
+
+// ── Recipe Builder ───────────────────────────────────────────────────────────
+let builderRows = []; // [{ id, ingId, qty, unit }]
+let editingRecipeId = null;
+
+function rebuildBuilder() {
+  if (builderRows.length === 0) addIngRow();
+  renderBuilderRows();
+}
+
+function addIngRow() {
+  builderRows.push({ id: uid(), ingId: null, qty: "", unit: "g" });
+  renderBuilderRows();
+}
+
+function renderBuilderRows() {
+  const container = document.getElementById("ing-rows");
+  container.innerHTML = builderRows.map((row) => {
+    const c = (row.ingId && row.qty) ? rowCost(row) : null;
+    const costHtml = c !== null
+      ? `<span class="row-cost has-cost">${fmt$(c)}</span>`
+      : `<span class="row-cost">—</span>`;
+    return `
+    <div class="ing-row" data-row="${row.id}">
+      <div class="ac-wrap">
+        <input type="text" class="ing-search-inp" data-row="${row.id}" placeholder="Start typing…" value="${row.ingId ? esc(state.ingredients.find(i => i.id === row.ingId)?.name || "") : (row._typedName || "")}" autocomplete="off" />
+        <div class="ac-drop" id="ac-${row.id}" style="display:none;"></div>
+      </div>
+      <input type="number" class="ing-qty-inp" data-row="${row.id}" value="${row.qty}" placeholder="0" step="any" min="0" inputmode="decimal" />
+      <select class="ing-unit-sel" data-row="${row.id}">
+        ${RECIPE_UNITS.map(u => `<option value="${u.value}" ${u.value === row.unit ? "selected" : ""}>${u.label}</option>`).join("")}
+      </select>
+      ${costHtml}
+      <button class="icon" data-remove-row="${row.id}" aria-label="Remove">✕</button>
+    </div>`;
+  }).join("");
+
+  // Events
+  container.querySelectorAll(".ing-search-inp").forEach(inp => {
+    inp.addEventListener("input", e => onIngSearch(e.target));
+    inp.addEventListener("blur", e => setTimeout(() => closeAC(e.target.dataset.row), 150));
+    inp.addEventListener("focus", e => onIngSearch(e.target));
+  });
+  container.querySelectorAll(".ing-qty-inp").forEach(inp => {
+    inp.addEventListener("input", e => {
+      const row = builderRows.find(r => r.id === e.target.dataset.row);
+      if (row) { row.qty = e.target.value; updateRowCostCell(row); updateCostSummary(); }
+    });
+  });
+  container.querySelectorAll(".ing-unit-sel").forEach(sel => {
+    sel.addEventListener("change", e => {
+      const row = builderRows.find(r => r.id === e.target.dataset.row);
+      if (row) { row.unit = e.target.value; updateRowCostCell(row); updateCostSummary(); }
+    });
+  });
+  container.querySelectorAll("[data-remove-row]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.removeRow;
+      builderRows = builderRows.filter(r => r.id !== id);
+      if (builderRows.length === 0) addIngRow();
+      else renderBuilderRows();
+      updateCostSummary();
+    });
+  });
+
+  updateCostSummary();
+}
+
+function onIngSearch(inp) {
+  const rowId = inp.dataset.row;
+  const q = inp.value.toLowerCase().trim();
+  const drop = document.getElementById("ac-" + rowId);
+  const row = builderRows.find(r => r.id === rowId);
+  if (row) row._typedName = inp.value;
+
+  const matches = q.length === 0 ? state.ingredients.slice(0, 50) :
+    state.ingredients.filter(i => i.name.toLowerCase().includes(q));
+
+  if (matches.length === 0) { drop.style.display = "none"; return; }
+
+  drop.innerHTML = matches.map(i => {
+    const cpb = costPerBase(i);
+    const sub = cpb ? describeUnit(i) : "no pricing";
+    return `<div class="ac-item" data-ing-id="${i.id}"><div>${esc(i.name)}</div><div class="ac-sub">${esc(i.category || "")} · ${esc(sub)}</div></div>`;
+  }).join("");
+  drop.style.display = "block";
+
+  drop.querySelectorAll(".ac-item").forEach(item => {
+    item.addEventListener("mousedown", () => {
+      selectIng(rowId, item.dataset.ingId, inp);
+    });
+  });
+}
+
+function closeAC(rowId) {
+  const drop = document.getElementById("ac-" + rowId);
+  if (drop) drop.style.display = "none";
+}
+
+function selectIng(rowId, ingId, inp) {
+  const row = builderRows.find(r => r.id === rowId);
+  const ing = state.ingredients.find(i => i.id === ingId);
+  if (!row || !ing) return;
+  row.ingId = ingId;
+  row._typedName = null;
+  inp.value = ing.name;
+  closeAC(rowId);
+  // Default unit: match ingredient's purchase unit type
+  const cpb = costPerBase(ing);
+  if (cpb) {
+    if (cpb.type === "weight" && row.unit === "ml") row.unit = "g";
+    if (cpb.type === "volume" && row.unit === "g") row.unit = "ml";
+    if (cpb.type === "each") row.unit = "each";
+  }
+  // Re-render just the unit select for this row
+  const sel = document.querySelector(`.ing-unit-sel[data-row="${rowId}"]`);
+  if (sel) sel.value = row.unit;
+  updateCostSummary();
+}
+
+function updateRowCostCell(row) {
+  const el = document.querySelector(`.ing-row[data-row="${row.id}"] .row-cost`);
+  if (!el) return;
+  const c = (row.ingId && row.qty) ? rowCost(row) : null;
+  el.textContent = c !== null ? fmt$(c) : "—";
+  el.classList.toggle("has-cost", c !== null);
+}
+
+function updateCostSummary() {
+  const portions = Math.max(1, parseInt(document.getElementById("recipe-portions").value) || 1);
+  const menuPrice = parseFloat(document.getElementById("recipe-price").value) || 0;
+  const targetCogs = parseFloat(document.getElementById("recipe-target-cogs").value) || 28;
+
+  let total = 0, anyUnresolved = false;
+  builderRows.forEach(row => {
+    if (!row.ingId || !row.qty) return;
+    const c = rowCost(row);
+    if (c === null) { anyUnresolved = true; return; }
+    total += c;
+  });
+
+  const perPortion = total / portions;
+  const cogsRaw = menuPrice > 0 ? (perPortion / menuPrice) * 100 : null;
+  const gp = menuPrice > 0 ? menuPrice - perPortion : null;
+
+  document.getElementById("cs-recipe-cost").textContent = fmt$(total) + (anyUnresolved ? " (some items not priced)" : "");
+  document.getElementById("cs-portion-cost").textContent = fmt$(perPortion);
+
+  const cogsEl = document.getElementById("cs-cogs");
+  if (cogsRaw !== null) {
+    const cls = cogsRaw <= targetCogs ? "cogs-good" : cogsRaw <= targetCogs + 5 ? "cogs-warn" : "cogs-bad";
+    cogsEl.innerHTML = `<span class="${cls}">${fmtPct(cogsRaw)}</span> <span style="color:var(--text-3); font-size:0.8em;">(target ${fmtPct(targetCogs)})</span>`;
+  } else {
+    cogsEl.textContent = "—";
+  }
+  document.getElementById("cs-gp").textContent = gp !== null ? fmt$(gp) : "—";
+}
+
+["recipe-price","recipe-target-cogs","recipe-portions"].forEach(id => {
+  document.getElementById(id).addEventListener("input", updateCostSummary);
+});
+
+document.getElementById("add-ing-row").addEventListener("click", addIngRow);
+
+document.getElementById("clear-builder-btn").addEventListener("click", () => {
+  if (!confirm("Clear the current recipe?")) return;
+  editingRecipeId = null;
+  document.getElementById("recipe-name").value = "";
+  document.getElementById("recipe-price").value = "";
+  document.getElementById("recipe-target-cogs").value = "28";
+  document.getElementById("recipe-portions").value = "1";
+  builderRows = [];
+  addIngRow();
+  updateCostSummary();
+});
+
+document.getElementById("save-recipe-btn").addEventListener("click", () => {
+  const name = document.getElementById("recipe-name").value.trim();
+  if (!name) { alert("Enter a recipe name first."); return; }
+
+  const portions = Math.max(1, parseInt(document.getElementById("recipe-portions").value) || 1);
+  const menuPrice = parseFloat(document.getElementById("recipe-price").value) || 0;
+  const targetCogs = parseFloat(document.getElementById("recipe-target-cogs").value) || 28;
+
+  let totalCost = 0;
+  const rows = builderRows.filter(r => r.ingId && r.qty).map(r => {
+    const c = rowCost(r) || 0;
+    totalCost += c;
+    const ing = state.ingredients.find(i => i.id === r.ingId);
+    return { ingId: r.ingId, ingName: ing?.name || "", qty: Number(r.qty), unit: r.unit, cost: c };
+  });
+
+  if (rows.length === 0) { alert("Add at least one ingredient."); return; }
+
+  const recipe = {
+    id: editingRecipeId || uid(),
+    name,
+    menuPrice,
+    targetCogs,
+    portions,
+    rows,
+    totalCost,
+    costPerPortion: totalCost / portions,
+    cogs: menuPrice > 0 ? (totalCost / portions / menuPrice) * 100 : null,
+    savedAt: new Date().toISOString(),
+  };
+
+  if (editingRecipeId) {
+    const idx = state.recipes.findIndex(r => r.id === editingRecipeId);
+    if (idx >= 0) state.recipes[idx] = recipe;
+  } else {
+    state.recipes.unshift(recipe);
+  }
+
+  scheduleSave();
+  showToast(editingRecipeId ? "Recipe updated" : "Recipe saved to inventory");
+  editingRecipeId = null;
+  document.getElementById("recipe-name").value = "";
+  document.getElementById("recipe-price").value = "";
+  document.getElementById("recipe-target-cogs").value = "28";
+  document.getElementById("recipe-portions").value = "1";
+  builderRows = [];
+  addIngRow();
+  updateCostSummary();
+});
+
+// ── Recipe Inventory ─────────────────────────────────────────────────────────
+function renderRecipes() {
+  const list = document.getElementById("recipes-list");
+  const search = (document.getElementById("recipe-search").value || "").toLowerCase();
+  const filtered = state.recipes.filter(r => r.name.toLowerCase().includes(search));
+
+  // Stats
+  const avgCogs = state.recipes.length > 0
+    ? state.recipes.filter(r => r.cogs != null).reduce((a, r) => a + r.cogs, 0) / state.recipes.filter(r => r.cogs != null).length
+    : null;
+  document.getElementById("inv-stats").innerHTML = `
+    <div class="stat"><div class="label">Recipes</div><div class="value">${state.recipes.length}</div></div>
+    <div class="stat"><div class="label">Ingredients</div><div class="value">${state.ingredients.length}</div></div>
+    <div class="stat"><div class="label">Avg COGS</div><div class="value">${avgCogs != null ? fmtPct(avgCogs) : "—"}</div></div>
+  `;
+
+  if (filtered.length === 0) {
+    list.innerHTML = state.recipes.length === 0
+      ? '<div class="empty">No recipes yet. Build one on the <strong>Build Recipe</strong> tab.</div>'
+      : '<div class="empty">No recipes match your search.</div>';
+    return;
+  }
+
+  list.innerHTML = filtered.map(r => {
+    const cogsClass = r.cogs == null ? "" : r.cogs <= (r.targetCogs || 28) ? "cogs-good" : r.cogs <= (r.targetCogs || 28) + 5 ? "cogs-warn" : "cogs-bad";
+    return `
+      <div class="card recipe-card" data-recipe="${r.id}" style="cursor:pointer;">
+        <div class="row between">
+          <div>
+            <div class="rname">${esc(r.name)}</div>
+            <div class="rmeta">${r.rows.length} ingredient${r.rows.length === 1 ? "" : "s"} · ${r.portions} portion${r.portions === 1 ? "" : "s"}</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-weight:700; font-size:1rem;">${fmt$(r.costPerPortion)}<span style="font-size:0.78rem; color:var(--text-3); font-weight:400;"> /portion</span></div>
+            ${r.menuPrice ? `<div style="color:var(--text-3); font-size:0.8rem;">${fmt$(r.menuPrice)} menu</div>` : ""}
+          </div>
+        </div>
+        <div class="rtags">
+          ${r.cogs != null ? `<span class="rtag ${cogsClass}">${fmtPct(r.cogs)} COGS</span>` : ""}
+          ${r.menuPrice ? `<span class="rtag">${fmt$(r.menuPrice - r.costPerPortion)} GP</span>` : ""}
+          <span class="rtag">${fmt$(r.totalCost)} total</span>
+        </div>
+      </div>`;
+  }).join("");
+
+  list.querySelectorAll(".recipe-card").forEach(el => {
+    el.addEventListener("click", () => openRecipeDetail(el.dataset.recipe));
+  });
+}
+document.getElementById("recipe-search").addEventListener("input", renderRecipes);
+
+let viewingRecipeId = null;
+function openRecipeDetail(id) {
+  viewingRecipeId = id;
+  const r = state.recipes.find(x => x.id === id);
+  if (!r) return;
+  const cogsClass = r.cogs == null ? "" : r.cogs <= (r.targetCogs || 28) ? "cogs-good" : r.cogs <= (r.targetCogs || 28) + 5 ? "cogs-warn" : "cogs-bad";
+  document.getElementById("recipe-modal-title").textContent = r.name;
+  document.getElementById("recipe-modal-body").innerHTML = `
+    <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:14px; font-size:0.88rem; color:var(--text-2);">
+      <span>Menu price: <strong style="color:var(--text);">${r.menuPrice ? fmt$(r.menuPrice) : "—"}</strong></span>
+      <span>Portions: <strong style="color:var(--text);">${r.portions}</strong></span>
+      <span>Cost/portion: <strong style="color:var(--text);">${fmt$(r.costPerPortion)}</strong></span>
+      <span>COGS: <strong class="${cogsClass}">${r.cogs != null ? fmtPct(r.cogs) : "—"}</strong></span>
+    </div>
+    <div class="card" style="padding:0;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.87rem;">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding:8px; color:var(--text-2); font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em; border-bottom:1px solid var(--border);">Ingredient</th>
+            <th style="text-align:right; padding:8px; color:var(--text-2); font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em; border-bottom:1px solid var(--border);">Qty</th>
+            <th style="text-align:right; padding:8px; color:var(--text-2); font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em; border-bottom:1px solid var(--border);">Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${r.rows.map(row => `
+            <tr>
+              <td style="padding:9px 8px; border-bottom:1px solid var(--border);">${esc(row.ingName)}</td>
+              <td style="padding:9px 8px; border-bottom:1px solid var(--border); text-align:right; font-variant-numeric:tabular-nums;">${row.qty} ${UNIT_LABELS[row.unit] || row.unit}</td>
+              <td style="padding:9px 8px; border-bottom:1px solid var(--border); text-align:right; font-variant-numeric:tabular-nums;">${fmt$(row.cost)}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2" style="padding:9px 8px; font-weight:700;">Total</td>
+            <td style="padding:9px 8px; text-align:right; font-weight:700; font-variant-numeric:tabular-nums;">${fmt$(r.totalCost)}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    ${r.savedAt ? `<div style="margin-top:8px; font-size:0.75rem; color:var(--text-3);">Saved ${new Date(r.savedAt).toLocaleDateString("en-US", {month:"short",day:"numeric",year:"numeric"})}</div>` : ""}
+  `;
+  document.getElementById("recipe-modal-bg").classList.add("show");
+}
+
+document.getElementById("rm-close").addEventListener("click", () => document.getElementById("recipe-modal-bg").classList.remove("show"));
+document.getElementById("recipe-modal-bg").addEventListener("click", e => { if (e.target === document.getElementById("recipe-modal-bg")) document.getElementById("recipe-modal-bg").classList.remove("show"); });
+
+document.getElementById("rm-edit").addEventListener("click", () => {
+  const r = state.recipes.find(x => x.id === viewingRecipeId);
+  if (!r) return;
+  editingRecipeId = r.id;
+  document.getElementById("recipe-name").value = r.name;
+  document.getElementById("recipe-price").value = r.menuPrice || "";
+  document.getElementById("recipe-target-cogs").value = r.targetCogs || 28;
+  document.getElementById("recipe-portions").value = r.portions || 1;
+  builderRows = r.rows.map(row => ({ id: uid(), ingId: row.ingId, qty: row.qty, unit: row.unit }));
+  renderBuilderRows();
+  document.getElementById("recipe-modal-bg").classList.remove("show");
+  document.querySelectorAll("#nav button").forEach(b => b.classList.toggle("active", b.dataset.tab === "builder"));
+  document.querySelectorAll(".panel").forEach(p => p.classList.toggle("active", p.id === "tab-builder"));
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  showToast("Recipe loaded for editing");
+});
+
+document.getElementById("rm-delete").addEventListener("click", async () => {
+  const r = state.recipes.find(x => x.id === viewingRecipeId);
+  if (!r || !confirm(`Delete "${r.name}"?`)) return;
+  state.recipes = state.recipes.filter(x => x.id !== viewingRecipeId);
+  await doSave();
+  document.getElementById("recipe-modal-bg").classList.remove("show");
+  renderRecipes();
+  showToast("Recipe deleted");
+});
+
+// ── In-House ──────────────────────────────────────────────────────────────────
+let ihRows = [];
+let editingInHouseId = null;
+
+function ihAddRow() {
+  ihRows.push({ id: uid(), ingId: null, qty: "", unit: "g" });
+  renderIhRows();
+}
+
+function renderIhRows() {
+  const container = document.getElementById("ih-ing-rows");
+  container.innerHTML = ihRows.map(row => `
+    <div class="ing-row" data-ih-row="${row.id}">
+      <div class="ac-wrap">
+        <input type="text" class="ih-search-inp" data-row="${row.id}" placeholder="Start typing…"
+          value="${row.ingId ? esc(state.ingredients.find(i => i.id === row.ingId)?.name || "") : (row._typedName || "")}"
+          autocomplete="off" />
+        <div class="ac-drop" id="ih-ac-${row.id}" style="display:none;"></div>
+      </div>
+      <input type="number" class="ih-qty-inp" data-row="${row.id}" value="${row.qty}" placeholder="0" step="any" min="0" inputmode="decimal" />
+      <select class="ih-unit-sel" data-row="${row.id}">
+        ${RECIPE_UNITS.map(u => `<option value="${u.value}" ${u.value === row.unit ? "selected" : ""}>${u.label}</option>`).join("")}
+      </select>
+      <button class="icon" data-ih-remove="${row.id}">✕</button>
+    </div>
+  `).join("");
+
+  container.querySelectorAll(".ih-search-inp").forEach(inp => {
+    inp.addEventListener("input", e => onIhSearch(e.target));
+    inp.addEventListener("focus", e => onIhSearch(e.target));
+    inp.addEventListener("blur", e => setTimeout(() => {
+      const drop = document.getElementById("ih-ac-" + e.target.dataset.row);
+      if (drop) drop.style.display = "none";
+    }, 150));
+  });
+  container.querySelectorAll(".ih-qty-inp").forEach(inp => {
+    inp.addEventListener("input", e => {
+      const row = ihRows.find(r => r.id === e.target.dataset.row);
+      if (row) { row.qty = e.target.value; updateIhCost(); }
+    });
+  });
+  container.querySelectorAll(".ih-unit-sel").forEach(sel => {
+    sel.addEventListener("change", e => {
+      const row = ihRows.find(r => r.id === e.target.dataset.row);
+      if (row) { row.unit = e.target.value; updateIhCost(); }
+    });
+  });
+  container.querySelectorAll("[data-ih-remove]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      ihRows = ihRows.filter(r => r.id !== btn.dataset.ihRemove);
+      if (ihRows.length === 0) ihAddRow();
+      else renderIhRows();
+      updateIhCost();
+    });
+  });
+  updateIhCost();
+}
+
+function onIhSearch(inp) {
+  const rowId = inp.dataset.row;
+  const q = inp.value.toLowerCase().trim();
+  const drop = document.getElementById("ih-ac-" + rowId);
+  const row = ihRows.find(r => r.id === rowId);
+  if (row) row._typedName = inp.value;
+
+  const matches = q.length === 0
+    ? state.ingredients.filter(i => !i.isInHouse).slice(0, 50)
+    : state.ingredients.filter(i => !i.isInHouse && i.name.toLowerCase().includes(q));
+
+  if (matches.length === 0) { drop.style.display = "none"; return; }
+  drop.innerHTML = matches.map(i => {
+    const cpb = costPerBase(i);
+    const sub = cpb ? describeUnit(i) : "no pricing";
+    return `<div class="ac-item" data-ing-id="${i.id}"><div>${esc(i.name)}</div><div class="ac-sub">${esc(i.category || "")} · ${esc(sub)}</div></div>`;
+  }).join("");
+  drop.style.display = "block";
+  drop.querySelectorAll(".ac-item").forEach(item => {
+    item.addEventListener("mousedown", () => {
+      const row = ihRows.find(r => r.id === rowId);
+      const ing = state.ingredients.find(i => i.id === item.dataset.ingId);
+      if (!row || !ing) return;
+      row.ingId = ing.id; row._typedName = null;
+      inp.value = ing.name;
+      drop.style.display = "none";
+      const cpb = costPerBase(ing);
+      if (cpb) {
+        if (cpb.type === "weight" && row.unit === "ml") row.unit = "g";
+        if (cpb.type === "volume" && row.unit === "g") row.unit = "ml";
+        if (cpb.type === "each") row.unit = "each";
+      }
+      const sel = container.querySelector(`.ih-unit-sel[data-row="${rowId}"]`);
+      if (sel) sel.value = row.unit;
+      updateIhCost();
+    });
+  });
+}
+
+function updateIhCost() {
+  const yieldQty = parseFloat(document.getElementById("ih-yield-qty").value) || 0;
+  const yieldUnit = document.getElementById("ih-yield-unit").value;
+  let total = 0;
+  ihRows.forEach(row => {
+    if (!row.ingId || !row.qty) return;
+    total += rowCost(row) || 0;
+  });
+  const unitLabel = UNIT_LABELS[yieldUnit] || yieldUnit;
+  document.getElementById("ih-total-cost").textContent = fmt$(total);
+  document.getElementById("ih-cpp-label").textContent = `Cost per ${unitLabel}`;
+  if (yieldQty > 0) {
+    const base = toBase(yieldQty, yieldUnit);
+    const cpp = base.val > 0 ? total / yieldQty : 0;
+    document.getElementById("ih-cpp").textContent = fmt$(cpp) + `/${unitLabel}`;
+  } else {
+    document.getElementById("ih-cpp").textContent = "—";
+  }
+}
+
+document.getElementById("ih-yield-qty").addEventListener("input", updateIhCost);
+document.getElementById("ih-yield-unit").addEventListener("change", () => { updateIhCost(); });
+document.getElementById("ih-add-row").addEventListener("click", ihAddRow);
+
+document.getElementById("ih-clear-btn").addEventListener("click", () => {
+  if (!confirm("Clear this prep?")) return;
+  editingInHouseId = null;
+  document.getElementById("ih-name").value = "";
+  document.getElementById("ih-yield-qty").value = "";
+  document.getElementById("ih-yield-unit").value = "lb";
+  ihRows = [];
+  ihAddRow();
+});
+
+document.getElementById("ih-save-btn").addEventListener("click", () => {
+  const name = document.getElementById("ih-name").value.trim();
+  if (!name) { alert("Enter a prep name."); return; }
+  const yieldQty = parseFloat(document.getElementById("ih-yield-qty").value) || 0;
+  if (!yieldQty) { alert("Enter a yield quantity."); return; }
+  const yieldUnit = document.getElementById("ih-yield-unit").value;
+
+  let totalCost = 0;
+  const rows = ihRows.filter(r => r.ingId && r.qty).map(r => {
+    const c = rowCost(r) || 0; totalCost += c;
+    const ing = state.ingredients.find(i => i.id === r.ingId);
+    return { ingId: r.ingId, ingName: ing?.name || "", qty: Number(r.qty), unit: r.unit, cost: c };
+  });
+  if (rows.length === 0) { alert("Add at least one ingredient."); return; }
+
+  const costPerUnit = totalCost / yieldQty;
+  const prep = {
+    id: editingInHouseId || uid(),
+    name, yieldQty, yieldUnit, rows, totalCost, costPerUnit,
+    savedAt: new Date().toISOString(),
+  };
+
+  if (editingInHouseId) {
+    const idx = state.inHousePreps.findIndex(p => p.id === editingInHouseId);
+    if (idx >= 0) state.inHousePreps[idx] = prep;
+  } else {
+    state.inHousePreps.unshift(prep);
+  }
+
+  // Upsert into ingredients DB
+  const ingName = name + " (In-House)";
+  const existing = state.ingredients.find(i => i.isInHouse && i.inHouseId === prep.id);
+  const ingObj = {
+    id: existing?.id || uid(),
+    name: ingName, category: "In-House", vendor: "In-House",
+    purchaseQty: yieldQty, purchaseUnit: yieldUnit,
+    purchaseCost: totalCost, yieldPct: 100,
+    isInHouse: true, inHouseId: prep.id,
+  };
+  if (existing) {
+    const idx = state.ingredients.findIndex(i => i.id === existing.id);
+    state.ingredients[idx] = ingObj;
+  } else {
+    state.ingredients.push(ingObj);
+  }
+
+  scheduleSave();
+  renderInHouseList();
+  renderIngredients();
+  populateCatFilter();
+  showToast(`"${name}" saved — added to Ingredients as "${ingName}"`);
+  editingInHouseId = null;
+  document.getElementById("ih-name").value = "";
+  document.getElementById("ih-yield-qty").value = "";
+  document.getElementById("ih-yield-unit").value = "lb";
+  ihRows = [];
+  ihAddRow();
+});
+
+function renderInHouseList() {
+  const list = document.getElementById("inhouse-list");
+  if (!state.inHousePreps || state.inHousePreps.length === 0) {
+    list.innerHTML = '<div class="empty">No preps saved yet. Build one above.</div>';
+    return;
+  }
+  list.innerHTML = state.inHousePreps.map(p => {
+    const unitLabel = UNIT_LABELS[p.yieldUnit] || p.yieldUnit;
+    return `
+      <div class="card">
+        <div class="row between">
+          <div>
+            <div style="font-weight:600; font-size:1rem;">${esc(p.name)}</div>
+            <div style="font-size:0.82rem; color:var(--text-2); margin-top:2px;">
+              Yields ${p.yieldQty} ${unitLabel} · ${p.rows.length} ingredient${p.rows.length === 1 ? "" : "s"}
+            </div>
+            <div style="font-size:0.82rem; margin-top:4px; display:flex; gap:12px; flex-wrap:wrap;">
+              <span>Total cost: <strong>${fmt$(p.totalCost)}</strong></span>
+              <span>Per ${unitLabel}: <strong>${fmt$(p.costPerUnit)}</strong></span>
+            </div>
+          </div>
+          <div style="display:flex; gap:4px; flex-shrink:0;">
+            <button class="icon" data-ih-edit="${p.id}" aria-label="Edit">✎</button>
+            <button class="icon" data-ih-del="${p.id}" aria-label="Delete">✕</button>
+          </div>
+        </div>
+      </div>`;
+  }).join("");
+
+  list.querySelectorAll("[data-ih-edit]").forEach(btn => {
+    btn.addEventListener("click", () => loadIhForEdit(btn.dataset.ihEdit));
+  });
+  list.querySelectorAll("[data-ih-del]").forEach(btn => {
+    btn.addEventListener("click", () => deleteInHouse(btn.dataset.ihDel));
+  });
+}
+
+function loadIhForEdit(id) {
+  const p = state.inHousePreps.find(x => x.id === id);
+  if (!p) return;
+  editingInHouseId = p.id;
+  document.getElementById("ih-name").value = p.name;
+  document.getElementById("ih-yield-qty").value = p.yieldQty;
+  document.getElementById("ih-yield-unit").value = p.yieldUnit;
+  ihRows = p.rows.map(r => ({ id: uid(), ingId: r.ingId, qty: r.qty, unit: r.unit }));
+  renderIhRows();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  showToast("Prep loaded for editing");
+}
+
+function deleteInHouse(id) {
+  const p = state.inHousePreps.find(x => x.id === id);
+  if (!p || !confirm(`Delete "${p.name}"? It will also be removed from the Ingredients list.`)) return;
+  state.inHousePreps = state.inHousePreps.filter(x => x.id !== id);
+  state.ingredients = state.ingredients.filter(i => !(i.isInHouse && i.inHouseId === id));
+  scheduleSave();
+  renderInHouseList();
+  renderIngredients();
+  populateCatFilter();
+  showToast("Prep deleted");
+}
+
+// ── Invoice Upload ────────────────────────────────────────────────────────────
+const ANTHROPIC_KEY = ""; // removed - proxied server-side
+
+const INVOICE_PROMPT = `You are extracting ingredient/product data from a food service invoice for a restaurant.
+
+Return ONLY a JSON object (no markdown, no explanation) in this exact format:
+{
+  "vendor": "vendor name from invoice header",
+  "invoiceDate": "YYYY-MM-DD format, or null if not found",
+  "items": [
+    {
+      "name": "ingredient name, concise and clear",
+      "category": "one of: Produce, Proteins, Seafood, Dairy, Cheese, Charcuterie, Dry Goods, Oil & Vinegar, Pantry, Herbs, Mushrooms, In-House, Other",
+      "purchaseQty": <number - the quantity in the purchase unit>,
+      "purchaseUnit": "one of: lb, oz_dry, kg, g, fl_oz, ml, l, gal, each, case",
+      "purchaseCost": <number - total line item cost in dollars>,
+      "yieldPct": <number 50-100 - estimated usable yield after trimming/prep>,
+      "notes": "any uncertainty about unit or price, or empty string"
+    }
+  ]
+}
+
+Rules:
+- purchaseQty × unit should match what was delivered (e.g. "20 lbs" → qty:20, unit:"lb")
+- For cases (e.g. "CS 12/9.5 OZ"), set unit to "case" and explain in notes
+- purchaseCost is the EXTENDED price (total for that line), not the unit price
+- Skip non-food items (boxes, tape, gloves, delivery charges, taxes)
+- If price is unclear, use 0 and note it
+- Yield: proteins ~80%, whole produce ~85-90%, pre-prepped ~100%, leafy greens ~90%`;
+
+function invShow(id) {
+  ["invoice-upload-area","invoice-processing","invoice-results","invoice-error"].forEach(x => {
+    document.getElementById(x).style.display = x === id ? "" : "none";
+  });
+}
+
+function invReset() { invShow("invoice-upload-area"); document.getElementById("invoice-file-input").value = ""; }
+
+// Drag & drop
+const uploadArea = document.getElementById("invoice-upload-area");
+uploadArea.addEventListener("click", () => document.getElementById("invoice-file-input").click());
+uploadArea.addEventListener("dragover", e => { e.preventDefault(); uploadArea.classList.add("drag-over"); });
+uploadArea.addEventListener("dragleave", () => uploadArea.classList.remove("drag-over"));
+uploadArea.addEventListener("drop", e => { e.preventDefault(); uploadArea.classList.remove("drag-over"); const f = e.dataTransfer.files[0]; if (f) processInvoiceFile(f); });
+document.getElementById("invoice-file-input").addEventListener("change", e => { if (e.target.files[0]) processInvoiceFile(e.target.files[0]); });
+document.getElementById("invoice-reset-btn").addEventListener("click", invReset);
+document.getElementById("invoice-error-reset").addEventListener("click", invReset);
+
+async function processInvoiceFile(file) {
+  invShow("invoice-processing");
+  document.getElementById("invoice-processing-msg").textContent = "Reading file…";
+
+  try {
+    const isImage = file.type.startsWith("image/");
+    const isPdf = file.type === "application/pdf";
+    if (!isImage && !isPdf) throw new Error("Unsupported file type. Use JPG, PNG, HEIC, or PDF.");
+
+    document.getElementById("invoice-processing-msg").textContent = "Sending to Claude…";
+
+    const b64 = await new Promise((res, rej) => {
+      const reader = new FileReader();
+      reader.onload = () => res(reader.result.split(",")[1]);
+      reader.onerror = rej;
+      reader.readAsDataURL(file);
+    });
+
+    const mediaType = isPdf ? "application/pdf" : (file.type || "image/jpeg");
+    const contentBlock = isPdf
+      ? { type: "document", source: { type: "base64", media_type: "application/pdf", data: b64 } }
+      : { type: "image", source: { type: "base64", media_type: mediaType, data: b64 } };
+
+    const resp = await fetch("/.netlify/functions/claude", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "claude-haiku-4-5-20251001",
+        max_tokens: 4096,
+        messages: [{ role: "user", content: [contentBlock, { type: "text", text: INVOICE_PROMPT }] }],
+      }),
+    });
+
+    if (!resp.ok) {
+      const err = await resp.json().catch(() => ({}));
+      throw new Error(err.error?.message || `API error ${resp.status}`);
+    }
+
+    document.getElementById("invoice-processing-msg").textContent = "Parsing results…";
+    const data = await resp.json();
+    const raw = data.content[0].text.trim();
+    const parsed = JSON.parse(raw.replace(/^```json\n?|```$/g, "").trim());
+
+    renderInvoiceResults(parsed, file.name, parsed.invoiceDate || null);
+  } catch (e) {
+    document.getElementById("invoice-error-msg").textContent = e.message;
+    invShow("invoice-error");
+  }
+}
+
+let _invoiceDate = null;
+
+function renderInvoiceResults(parsed, filename, invoiceDate) {
+  _invoiceDate = invoiceDate || null;
+  const vendor = parsed.vendor || "";
+  const items = parsed.items || [];
+  document.getElementById("invoice-result-title").textContent = `${items.length} item${items.length === 1 ? "" : "s"} found`;
+  const datePart = invoiceDate ? ` · Invoice date: ${invoiceDate}` : "";
+  document.getElementById("invoice-result-sub").textContent = `${vendor ? vendor + " · " : ""}${filename}${datePart}`;
+
+  const UNITS = ["lb","oz_dry","kg","g","fl_oz","ml","l","gal","each","case"];
+  const tbody = document.getElementById("invoice-tbody");
+
+  tbody.innerHTML = items.map((item, i) => {
+    const existing = state.ingredients.find(x => x.name.toLowerCase() === item.name.toLowerCase());
+    const willUpdate = !!existing;
+    return `<tr class="inv-row${willUpdate ? " will-update" : ""}" data-idx="${i}">
+      <td style="text-align:center;"><input type="checkbox" class="inv-check" checked /></td>
+      <td><input type="text" class="inv-name" value="${esc(item.name)}" /></td>
+      <td><input type="text" class="inv-cat" value="${esc(item.category || "")}" /></td>
+      <td><input type="text" class="inv-vendor" value="${esc(vendor)}" /></td>
+      <td><input type="number" class="inv-qty" value="${item.purchaseQty || ""}" step="any" min="0" style="text-align:right; width:70px;" /></td>
+      <td><select class="inv-unit">${UNITS.map(u => `<option value="${u}" ${u === item.purchaseUnit ? "selected" : ""}>${UNIT_LABELS[u] || u}</option>`).join("")}</select></td>
+      <td><input type="number" class="inv-cost" value="${item.purchaseCost || ""}" step="0.01" min="0" style="text-align:right; width:80px;" /></td>
+      <td><input type="number" class="inv-yield" value="${item.yieldPct || 100}" min="1" max="100" style="text-align:right; width:60px;" /></td>
+      <td><input type="text" class="inv-notes" value="${esc(item.notes || "")}" style="color:var(--text-3); font-size:0.78rem;" /></td>
+    </tr>`;
+  }).join("");
+
+  document.getElementById("invoice-check-all").checked = true;
+  document.getElementById("invoice-check-all").onchange = e => {
+    tbody.querySelectorAll(".inv-check").forEach(c => c.checked = e.target.checked);
+  };
+
+  invShow("invoice-results");
+}
+
+document.getElementById("invoice-add-btn").addEventListener("click", () => {
+  const rows = document.querySelectorAll("#invoice-tbody .inv-row");
+  let added = 0, skipped = 0;
+  rows.forEach(row => {
+    if (!row.querySelector(".inv-check").checked) return;
+    const name = row.querySelector(".inv-name").value.trim();
+    if (!name) return;
+    const ing = {
+      id: uid(),
+      name,
+      category: row.querySelector(".inv-cat").value.trim(),
+      vendor: row.querySelector(".inv-vendor").value.trim(),
+      purchaseQty: parseFloat(row.querySelector(".inv-qty").value) || 0,
+      purchaseUnit: row.querySelector(".inv-unit").value,
+      purchaseCost: parseFloat(row.querySelector(".inv-cost").value) || 0,
+      yieldPct: parseFloat(row.querySelector(".inv-yield").value) || 100,
+      invoiceDate: _invoiceDate || null,
+    };
+    const existIdx = state.ingredients.findIndex(x => x.name.toLowerCase() === name.toLowerCase());
+    if (existIdx >= 0) {
+      const old = state.ingredients[existIdx];
+      const priceChanged = Math.abs((old.purchaseCost || 0) - ing.purchaseCost) > 0.001 ||
+                           Math.abs((old.purchaseQty || 0) - ing.purchaseQty) > 0.001 ||
+                           old.purchaseUnit !== ing.purchaseUnit;
+      const history = old.priceHistory || [];
+      if (priceChanged) {
+        history.unshift({
+          purchaseCost: old.purchaseCost,
+          purchaseQty: old.purchaseQty,
+          purchaseUnit: old.purchaseUnit,
+          invoiceDate: old.invoiceDate || null,
+          vendor: old.vendor || "",
+        });
+      }
+      state.ingredients[existIdx] = { ...old, ...ing, id: old.id, priceHistory: history };
+      skipped++;
+    } else {
+      state.ingredients.push({ ...ing, priceHistory: [] });
+      added++;
+    }
+  });
+  scheduleSave();
+  populateCatFilter();
+  showToast(`Added ${added} new · updated ${skipped} existing ingredients`);
+  invReset();
+});
+
+// ── Invoice seed data ─────────────────────────────────────────────────────────
+const INVOICE_INGREDIENTS = [
+  // PRODUCE — Frank's Quality Produce
+  { name:"Lemons, Choice (115ct case)", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:115, purchaseUnit:"each", purchaseCost:49.75, yieldPct:100 },
+  { name:"Limes, Fancy", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"each", purchaseCost:2.50, yieldPct:100 },
+  { name:"Oranges, Cara Cara", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"each", purchaseCost:0.85, yieldPct:90 },
+  { name:"Oranges, Navel", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"each", purchaseCost:0.99, yieldPct:90 },
+  { name:"Ginger", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"lb", purchaseCost:4.35, yieldPct:100 },
+  { name:"Garlic, Peeled (5 lb jar)", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:5, purchaseUnit:"lb", purchaseCost:26.25, yieldPct:100 },
+  { name:"Lettuce, Sweet Gem (case)", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:12, purchaseUnit:"each", purchaseCost:42.50, yieldPct:90 },
+  { name:"Radicchio (12ct case)", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:12, purchaseUnit:"each", purchaseCost:35.25, yieldPct:90 },
+  { name:"Radicchio, Castel-Franco", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"each", purchaseCost:3.00, yieldPct:90 },
+  { name:"Radicchio, Treviso", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"each", purchaseCost:3.99, yieldPct:90 },
+  { name:"Frisee, Blonde (12ct case)", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:12, purchaseUnit:"each", purchaseCost:13.00, yieldPct:90 },
+  { name:"Asparagus, Local Loose", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"lb", purchaseCost:5.50, yieldPct:85 },
+  { name:"Brussels Sprouts, Loose", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"lb", purchaseCost:2.75, yieldPct:90 },
+  { name:"Carrots, Bunched Organic", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"each", purchaseCost:2.99, yieldPct:90 },
+  { name:"Carrots, Jumbo Loose", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"lb", purchaseCost:0.25, yieldPct:90 },
+  { name:"Celery", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"each", purchaseCost:0.99, yieldPct:85 },
+  { name:"Fennel", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"each", purchaseCost:2.99, yieldPct:90 },
+  { name:"Peas, Sugar Snap (10 lb case)", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:10, purchaseUnit:"lb", purchaseCost:57.75, yieldPct:95 },
+  { name:"Spinach, Baby Organic (4 lb case)", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:4, purchaseUnit:"lb", purchaseCost:41.00, yieldPct:95 },
+  { name:"Squash, Butternut (35 lb case)", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:35, purchaseUnit:"lb", purchaseCost:36.00, yieldPct:70 },
+  { name:"Shallots", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"lb", purchaseCost:3.50, yieldPct:90 },
+  { name:"Onion, Yellow Jumbo", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"lb", purchaseCost:0.25, yieldPct:90 },
+  { name:"Onion, Red Italian", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"each", purchaseCost:0.85, yieldPct:90 },
+  { name:"Onion, Sweet", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"lb", purchaseCost:1.50, yieldPct:90 },
+  { name:"Scallions, Spring White (12bn case)", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:12, purchaseUnit:"each", purchaseCost:8.50, yieldPct:90 },
+  { name:"Radish, Red", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"each", purchaseCost:2.75, yieldPct:90 },
+  { name:"Avocado (48ct case)", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:48, purchaseUnit:"each", purchaseCost:69.25, yieldPct:80 },
+  { name:"Peppers, Jalapeño", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"lb", purchaseCost:1.99, yieldPct:90 },
+  { name:"Peppers, Serrano", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"lb", purchaseCost:2.99, yieldPct:90 },
+  { name:"Tomatillo", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"lb", purchaseCost:3.25, yieldPct:90 },
+  { name:"Watercress, Living", category:"Produce", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"each", purchaseCost:1.50, yieldPct:90 },
+  // HERBS — Frank's Quality Produce
+  { name:"Herbs, Basil (loose pack)", category:"Herbs", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"lb", purchaseCost:36.50, yieldPct:80 },
+  { name:"Herbs, Thyme (1/4 lb)", category:"Herbs", vendor:"Frank's Quality Produce", purchaseQty:0.25, purchaseUnit:"lb", purchaseCost:5.50, yieldPct:80 },
+  { name:"Herbs, Mint", category:"Herbs", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"each", purchaseCost:6.99, yieldPct:90 },
+  { name:"Herbs, Oregano (1/4 lb)", category:"Herbs", vendor:"Frank's Quality Produce", purchaseQty:0.25, purchaseUnit:"lb", purchaseCost:3.99, yieldPct:90 },
+  { name:"Herbs, Parsley, Italian", category:"Herbs", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"each", purchaseCost:1.50, yieldPct:90 },
+  { name:"Herbs, Chives (1/4 lb)", category:"Herbs", vendor:"Frank's Quality Produce", purchaseQty:0.25, purchaseUnit:"lb", purchaseCost:3.50, yieldPct:90 },
+  { name:"Herbs, Cilantro", category:"Herbs", vendor:"Frank's Quality Produce", purchaseQty:1, purchaseUnit:"each", purchaseCost:0.99, yieldPct:90 },
+  // DAIRY — Frank's Quality Produce
+  { name:"Whole Milk (2-gal case)", category:"Dairy", vendor:"Frank's Quality Produce", purchaseQty:2, purchaseUnit:"gal", purchaseCost:11.50, yieldPct:100 },
+  { name:"Heavy Cream (half gallon)", category:"Dairy", vendor:"Frank's Quality Produce", purchaseQty:0.5, purchaseUnit:"gal", purchaseCost:10.75, yieldPct:100 },
+  { name:"Buttermilk (half gallon)", category:"Dairy", vendor:"Frank's Quality Produce", purchaseQty:0.5, purchaseUnit:"gal", purchaseCost:3.85, yieldPct:100 },
+  // EGGS — Farmstand Local Foods
+  { name:"Eggs, Chicken Sky Valley Farm (15dz/180ct)", category:"Dairy & Eggs", vendor:"Farmstand Local Foods", purchaseQty:180, purchaseUnit:"each", purchaseCost:114.50, yieldPct:100 },
+  // PROTEINS — Wilson Meat
+  { name:"Ground Pork, Kurobuta (Snake River Farms)", category:"Proteins", vendor:"Wilson Meat", purchaseQty:1, purchaseUnit:"lb", purchaseCost:5.99, yieldPct:100 },
+  { name:"Pork Shoulder, Boneless Fresh", category:"Proteins", vendor:"Wilson Meat", purchaseQty:1, purchaseUnit:"lb", purchaseCost:2.29, yieldPct:85 },
+  { name:"Bacon, Daily's EC Wilson (8–10 lb case)", category:"Proteins", vendor:"Wilson Meat", purchaseQty:1, purchaseUnit:"lb", purchaseCost:4.79, yieldPct:85 },
+  // SEAFOOD — East Anchor Distribution
+  { name:"Salmon, King (Creative Farm)", category:"Seafood", vendor:"East Anchor Distribution", purchaseQty:1, purchaseUnit:"each", purchaseCost:13.50, yieldPct:75 },
+  { name:"Albacore Tuna Loin, Local Frozen", category:"Seafood", vendor:"East Anchor Distribution", purchaseQty:1, purchaseUnit:"lb", purchaseCost:18.99, yieldPct:90 },
+  { name:"Mussels, Fresh", category:"Seafood", vendor:"East Anchor Distribution", purchaseQty:1, purchaseUnit:"each", purchaseCost:6.25, yieldPct:80 },
+  // CHEESE & DAIRY — Merlino Foods
+  { name:"Butter, Plugra Unsalted 82%", category:"Dairy", vendor:"Merlino Foods", purchaseQty:1, purchaseUnit:"lb", purchaseCost:3.32, yieldPct:100 },
+  { name:"Mozzarella, Grande Whole Milk Shredded (30 lb)", category:"Cheese", vendor:"Merlino Foods", purchaseQty:30, purchaseUnit:"lb", purchaseCost:109.80, yieldPct:100 },
+  { name:"Ricotta Salata, Brunelli Sheep Milk (7 lb)", category:"Cheese", vendor:"Merlino Foods", purchaseQty:7, purchaseUnit:"lb", purchaseCost:41.44, yieldPct:100 },
+  { name:"Scamorza, Smoked Ferndale (CS 12/9.5 oz)", category:"Cheese", vendor:"Merlino Foods", purchaseUnit:"case", caseQty:12, caseItemQty:9.5, caseItemUnit:"oz_dry", purchaseCost:75.25, yieldPct:100 },
+  { name:"Speck, Gasser Alto Adige", category:"Charcuterie", vendor:"Merlino Foods", purchaseQty:4.45, purchaseUnit:"lb", purchaseCost:46.19, yieldPct:90 },
+  { name:"Guanciale, Volpi Domestic", category:"Charcuterie", vendor:"Merlino Foods", purchaseQty:1, purchaseUnit:"lb", purchaseCost:11.39, yieldPct:90 },
+  { name:"Pecorino Romano, Sanniti (CS 12/8.5 oz)", category:"Cheese", vendor:"Merlino Foods", purchaseUnit:"case", caseQty:12, caseItemQty:8.5, caseItemUnit:"oz_dry", purchaseCost:75.25, yieldPct:100 },
+  { name:"Queso Fresco, El Mexicano (4 lb)", category:"Cheese", vendor:"Merlino Foods", purchaseQty:4, purchaseUnit:"lb", purchaseCost:19.96, yieldPct:100 },
+  { name:"Fontina, Belgioioso Italian (4 lb)", category:"Cheese", vendor:"Merlino Foods", purchaseQty:4, purchaseUnit:"lb", purchaseCost:20.92, yieldPct:100 },
+  { name:"Pepperoni, Swiss American (10 lb)", category:"Proteins", vendor:"Merlino Foods", purchaseQty:10, purchaseUnit:"lb", purchaseCost:57.80, yieldPct:100 },
+  { name:"N'duja Spicy Sausage (Tempesta)", category:"Charcuterie", vendor:"M Squared Specialty Goods", purchaseQty:1, purchaseUnit:"lb", purchaseCost:22.06, yieldPct:100 },
+  { name:"Olives, Castelvetrano Pitted (10 lb tub)", category:"Pantry", vendor:"Merlino Foods", purchaseQty:10, purchaseUnit:"lb", purchaseCost:64.70, yieldPct:100 },
+  { name:"Eggs, Cage-Free AA Large (Wilcox Liquid, 12 lb)", category:"Dairy & Eggs", vendor:"Merlino Foods", purchaseQty:12, purchaseUnit:"lb", purchaseCost:32.28, yieldPct:100 },
+  // DRY GOODS — Merlino Foods
+  { name:"Flour, Hi-Gluten Shepherd's Grain PROOF (50 lb)", category:"Dry Goods", vendor:"Merlino Foods", purchaseQty:50, purchaseUnit:"lb", purchaseCost:29.96, yieldPct:100 },
+  { name:"Flour, Hi-Gluten Shepherd's Grain OPUS (50 lb)", category:"Dry Goods", vendor:"Merlino Foods", purchaseQty:50, purchaseUnit:"lb", purchaseCost:29.96, yieldPct:100 },
+  { name:"Semolina, Shepherd's Grain (50 lb)", category:"Dry Goods", vendor:"Merlino Foods", purchaseQty:50, purchaseUnit:"lb", purchaseCost:33.60, yieldPct:100 },
+  { name:"Chocolate, Guittard Semi-Sweet Chunks (50 lb)", category:"Dry Goods", vendor:"Merlino Foods", purchaseQty:50, purchaseUnit:"lb", purchaseCost:361.71, yieldPct:100 },
+  { name:"Hashbrown Patties, Simplot (CS 12/10ct)", category:"Dry Goods", vendor:"Merlino Foods", purchaseQty:120, purchaseUnit:"each", purchaseCost:47.90, yieldPct:100 },
+  // OIL, VINEGAR & PANTRY
+  { name:"Sunflower Oil, Frienn High Oleic (20L case)", category:"Oil & Vinegar", vendor:"Merlino Foods", purchaseQty:20, purchaseUnit:"l", purchaseCost:83.00, yieldPct:100 },
+  { name:"Olive Oil, Atlas 5L (Villa Jerada)", category:"Oil & Vinegar", vendor:"Villa Jerada", purchaseQty:5, purchaseUnit:"l", purchaseCost:72.25, yieldPct:100 },
+  { name:"Vinegar, Banyuls (500 ml)", category:"Oil & Vinegar", vendor:"Merlino Foods", purchaseQty:500, purchaseUnit:"ml", purchaseCost:21.17, yieldPct:100 },
+  { name:"Colatura di Alici, Scalia (500 ml)", category:"Pantry", vendor:"M Squared Specialty Goods", purchaseQty:500, purchaseUnit:"ml", purchaseCost:46.00, yieldPct:100 },
+  { name:"Anchovies, Taillata 3.75 lb (Villa Jerada)", category:"Pantry", vendor:"Villa Jerada", purchaseQty:3.75, purchaseUnit:"lb", purchaseCost:47.24, yieldPct:100 },
+  { name:"San Marzano Tomatoes w/ Basil, Divella (case 6×3 lb)", category:"Pantry", vendor:"M Squared Specialty Goods", purchaseUnit:"case", caseQty:6, caseItemQty:3, caseItemUnit:"lb", purchaseCost:54.00, yieldPct:100 },
+  { name:"Ketchup, Heinz 1-gal can", category:"Pantry", vendor:"Merlino Foods", purchaseQty:1, purchaseUnit:"gal", purchaseCost:23.10, yieldPct:100 },
+  // CHEESE — M Squared Specialty Goods
+  { name:"Parmigiano Reggiano, 14-Month (per lb)", category:"Cheese", vendor:"M Squared Specialty Goods", purchaseQty:1, purchaseUnit:"lb", purchaseCost:12.85, yieldPct:100 },
+  // MUSHROOMS — Mushroom Joe
+  { name:"Mushrooms, Oyster", category:"Mushrooms", vendor:"Mushroom Joe", purchaseQty:1, purchaseUnit:"lb", purchaseCost:7.00, yieldPct:90 },
+  { name:"Mushrooms, King Oyster", category:"Mushrooms", vendor:"Mushroom Joe", purchaseQty:1, purchaseUnit:"lb", purchaseCost:9.00, yieldPct:90 },
+  { name:"Mushrooms, Shiitake", category:"Mushrooms", vendor:"Mushroom Joe", purchaseQty:1, purchaseUnit:"lb", purchaseCost:7.00, yieldPct:85 },
+  { name:"Mushrooms, Portabella", category:"Mushrooms", vendor:"Mushroom Joe", purchaseQty:1, purchaseUnit:"lb", purchaseCost:5.00, yieldPct:90 },
+  { name:"Mushrooms, Chicken of the Woods (Wild)", category:"Mushrooms", vendor:"Mushroom Joe", purchaseQty:1, purchaseUnit:"lb", purchaseCost:10.00, yieldPct:90 },
+  { name:"Mushrooms, Chanterelle (Wild)", category:"Mushrooms", vendor:"Mushroom Joe", purchaseQty:1, purchaseUnit:"lb", purchaseCost:15.00, yieldPct:90 },
+  { name:"Mushrooms, Hedgehog (Wild)", category:"Mushrooms", vendor:"Mushroom Joe", purchaseQty:1, purchaseUnit:"lb", purchaseCost:12.00, yieldPct:90 },
+  { name:"Mushrooms, Morel (Wild)", category:"Mushrooms", vendor:"Mushroom Joe", purchaseQty:1, purchaseUnit:"lb", purchaseCost:25.00, yieldPct:90 },
+  { name:"Mushrooms, Lobster (Wild)", category:"Mushrooms", vendor:"Mushroom Joe", purchaseQty:1, purchaseUnit:"lb", purchaseCost:14.00, yieldPct:90 },
+  { name:"Greens, Wild Foraged Mix (Nettles/Ramp/Miner's Lettuce)", category:"Produce", vendor:"Mushroom Joe", purchaseQty:1, purchaseUnit:"lb", purchaseCost:12.00, yieldPct:85 },
+];
+
+document.getElementById("add-ing-btn").insertAdjacentHTML("afterend",
+  `<button class="secondary" id="seed-ing-btn" style="white-space:nowrap;">⬇ Load Invoice Data</button>`
+);
+document.getElementById("seed-ing-btn").addEventListener("click", () => {
+  if (!confirm(`Load ${INVOICE_INGREDIENTS.length} ingredients from your invoices? Existing ingredients with the same name will be skipped.`)) return;
+  let added = 0;
+  INVOICE_INGREDIENTS.forEach(raw => {
+    if (state.ingredients.some(i => i.name.toLowerCase() === raw.name.toLowerCase())) return;
+    state.ingredients.push({ id: uid(), ...raw });
+    added++;
+  });
+  scheduleSave();
+  renderIngredients();
+  populateCatFilter();
+  showToast(`Added ${added} ingredients (${INVOICE_INGREDIENTS.length - added} already existed)`);
+});
+
+// ── Boot ─────────────────────────────────────────────────────────────────────
+loadAndStart();
+</script>
+</body>
+</html>
+
