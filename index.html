@@ -40,6 +40,15 @@
   /* Layout */
   main { padding: 16px; max-width: 960px; margin: 0 auto; }
   .panel { display: none; } .panel.active { display: block; }
+  .home-head { font-size:20px; font-weight:800; color:var(--text); margin-bottom:2px; }
+  .home-sub { font-size:13px; color:var(--text-2); margin-bottom:20px; }
+  .home-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:16px; max-width:840px; }
+  .home-tile { display:flex; flex-direction:column; align-items:flex-start; gap:5px; text-align:left; background:var(--bg-2); border:1.5px solid var(--border); border-radius:var(--radius); padding:22px 20px; cursor:pointer; font-family:inherit; transition:border-color .15s, box-shadow .15s, transform .05s; }
+  .home-tile:hover { border-color:var(--accent); box-shadow:var(--shadow-md); }
+  .home-tile:active { transform:translateY(1px); }
+  .home-ico { font-size:26px; line-height:1; }
+  .home-t { font-size:16px; font-weight:700; color:var(--accent); }
+  .home-d { font-size:12.5px; color:var(--text-2); font-weight:400; line-height:1.4; }
   .empty { text-align: center; padding: 40px 20px; color: var(--text-3); font-size: 0.95rem; }
   .row { display: flex; gap: 8px; align-items: center; }
   .row.between { justify-content: space-between; }
@@ -176,12 +185,12 @@
 <!-- APP -->
 <div id="app">
   <header>
-    <div class="header-brand">
+    <div class="header-brand" onclick="homeGo('home')" style="cursor:pointer;" title="Home">
       <img src="data:image/png;base64,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" alt="Cornelly" style="height:40px;width:auto;display:block;" />
       <span class="brand-sub">Food COGS Calculator</span>
     </div>
     <nav id="nav">
-      <button data-tab="builder" class="active">Build Recipe</button>
+      <button data-tab="builder">Build Recipe</button>
       <button data-tab="inhouse">In-House</button>
       <button data-tab="ingredients">Ingredients</button>
       <button data-tab="recipes">Recipe Inventory</button>
@@ -194,8 +203,21 @@
   </header>
 
   <main>
+    <!-- HOME -->
+    <section id="tab-home" class="panel active">
+      <div class="home-head">Food COGS Calculator</div>
+      <div class="home-sub">Choose a tool to get started.</div>
+      <div class="home-grid">
+        <button class="home-tile" onclick="homeGo('builder')"><span class="home-ico">🥘</span><span class="home-t">Build Recipe</span><span class="home-d">Compose a dish and cost it live</span></button>
+        <button class="home-tile" onclick="homeGo('recipes')"><span class="home-ico">📋</span><span class="home-t">Recipe Inventory</span><span class="home-d">Saved recipes with live COGS</span></button>
+        <button class="home-tile" onclick="homeGo('ingredients')"><span class="home-ico">🧾</span><span class="home-t">Ingredients</span><span class="home-d">Master ingredient list and prices</span></button>
+        <button class="home-tile" onclick="homeGo('inhouse')"><span class="home-ico">🧪</span><span class="home-t">In-House</span><span class="home-d">Batched and prepped ingredients</span></button>
+        <button class="home-tile" onclick="homeGo('invoice')"><span class="home-ico">📥</span><span class="home-t">Invoice Upload</span><span class="home-d">Scan invoices to add items</span></button>
+      </div>
+    </section>
+
     <!-- BUILD RECIPE -->
-    <section id="tab-builder" class="panel active">
+    <section id="tab-builder" class="panel">
       <div id="builder-form">
         <div class="recipe-header-fields">
           <div class="field">
@@ -607,7 +629,7 @@ async function loadAndStart() {
   populateCatFilter();
   // Restore tab from URL hash
   const hash = location.hash.replace("#", "");
-  const valid = ["builder","inhouse","ingredients","recipes"];
+  const valid = ["home","builder","inhouse","ingredients","recipes"];
   if (hash && valid.includes(hash)) activateTab(hash);
 }
 
@@ -620,6 +642,7 @@ function activateTab(tab) {
   if (tab === "inhouse") renderInHouseList();
   if (tab === "invoice") invReset();
 }
+function homeGo(tab){ location.hash = tab; activateTab(tab); window.scrollTo({ top: 0, behavior: "smooth" }); }
 
 document.querySelectorAll("#nav button").forEach(btn => {
   btn.addEventListener("click", () => {
@@ -631,8 +654,8 @@ document.querySelectorAll("#nav button").forEach(btn => {
 });
 
 window.addEventListener("hashchange", () => {
-  const tab = location.hash.replace("#", "") || "builder";
-  const valid = ["builder","inhouse","ingredients","recipes"];
+  const tab = location.hash.replace("#", "") || "home";
+  const valid = ["home","builder","inhouse","ingredients","recipes"];
   if (valid.includes(tab)) activateTab(tab);
 });
 
