@@ -313,6 +313,7 @@
               <option value="qt">qt</option>
               <option value="gal">gal</option>
               <option value="each">each</option>
+              <option value="bunch">bunch</option>
             </select>
           </div>
         </div>
@@ -439,6 +440,7 @@
           <option value="qt">quart</option>
           <option value="gal">gallon</option>
           <option value="each">each / unit</option>
+          <option value="bunch">bunch</option>
           <option value="case">case (specify qty below)</option>
         </select>
       </div>
@@ -503,7 +505,7 @@
 // "case" is resolved at entry time to a base unit.
 
 const UNIT_LABELS = {
-  g: "g", kg: "kg", lb: "lb", oz_dry: "oz", oz: "oz (wet)", fl_oz: "fl oz", ml: "ml", l: "l", qt: "qt", gal: "gal", each: "each"
+  g: "g", kg: "kg", lb: "lb", oz_dry: "oz", oz: "oz (wet)", fl_oz: "fl oz", ml: "ml", l: "l", qt: "qt", gal: "gal", each: "each", bunch: "bunch"
 };
 
 // Returns grams (weight) or ml (volume) or count for "each"
@@ -519,6 +521,7 @@ function toBase(qty, unit) {
     case "qt":     return { val: qty * 946.353, type: "volume" };
     case "gal":    return { val: qty * 3785.41, type: "volume" };
     case "each":   return { val: qty, type: "each" };
+    case "bunch":  return { val: qty, type: "each" };
     default:       return { val: qty, type: "each" };
   }
 }
@@ -559,6 +562,7 @@ const RECIPE_UNITS = [
   { value: "qt",     label: "qt" },
   { value: "gal",    label: "gal" },
   { value: "each",   label: "each" },
+  { value: "bunch",  label: "bunch" },
 ];
 
 // ── Storage (GitHub as shared backend) ───────────────────────────────────────
@@ -1654,7 +1658,7 @@ function renderInvoiceResults(parsed, filename, invoiceDate) {
   const datePart = invoiceDate ? ` · Invoice date: ${invoiceDate}` : "";
   document.getElementById("invoice-result-sub").textContent = `${vendor ? vendor + " · " : ""}${filename}${datePart}`;
 
-  const UNITS = ["lb","oz_dry","kg","g","fl_oz","ml","l","qt","gal","each","case"];
+  const UNITS = ["lb","oz_dry","kg","g","fl_oz","ml","l","qt","gal","each","bunch","case"];
   const tbody = document.getElementById("invoice-tbody");
 
   tbody.innerHTML = items.map((item, i) => {
