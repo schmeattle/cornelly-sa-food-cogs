@@ -310,6 +310,7 @@
               <option value="l">liter</option>
               <option value="ml">ml</option>
               <option value="fl_oz">fl oz</option>
+              <option value="qt">qt</option>
               <option value="gal">gal</option>
               <option value="each">each</option>
             </select>
@@ -435,6 +436,7 @@
           <option value="fl_oz">fl oz</option>
           <option value="ml">ml</option>
           <option value="l">liter</option>
+          <option value="qt">quart</option>
           <option value="gal">gallon</option>
           <option value="each">each / unit</option>
           <option value="case">case (specify qty below)</option>
@@ -456,6 +458,7 @@
           <option value="g">g</option>
           <option value="ml">ml</option>
           <option value="l">liter</option>
+          <option value="qt">quart</option>
         </select>
       </div>
     </div>
@@ -500,7 +503,7 @@
 // "case" is resolved at entry time to a base unit.
 
 const UNIT_LABELS = {
-  g: "g", kg: "kg", lb: "lb", oz_dry: "oz", oz: "oz (wet)", fl_oz: "fl oz", ml: "ml", l: "l", gal: "gal", each: "each"
+  g: "g", kg: "kg", lb: "lb", oz_dry: "oz", oz: "oz (wet)", fl_oz: "fl oz", ml: "ml", l: "l", qt: "qt", gal: "gal", each: "each"
 };
 
 // Returns grams (weight) or ml (volume) or count for "each"
@@ -513,6 +516,7 @@ function toBase(qty, unit) {
     case "ml":     return { val: qty, type: "volume" };
     case "l":      return { val: qty * 1000, type: "volume" };
     case "fl_oz":  return { val: qty * 29.5735, type: "volume" };
+    case "qt":     return { val: qty * 946.353, type: "volume" };
     case "gal":    return { val: qty * 3785.41, type: "volume" };
     case "each":   return { val: qty, type: "each" };
     default:       return { val: qty, type: "each" };
@@ -535,6 +539,7 @@ function fromBase(baseVal, baseType, unit) {
       case "ml":    return baseVal;
       case "l":     return baseVal / 1000;
       case "fl_oz": return baseVal / 29.5735;
+      case "qt":    return baseVal / 946.353;
       case "gal":   return baseVal / 3785.41;
       default: return null;
     }
@@ -551,6 +556,7 @@ const RECIPE_UNITS = [
   { value: "ml",     label: "ml" },
   { value: "l",      label: "l" },
   { value: "fl_oz",  label: "fl oz" },
+  { value: "qt",     label: "qt" },
   { value: "gal",    label: "gal" },
   { value: "each",   label: "each" },
 ];
@@ -1648,7 +1654,7 @@ function renderInvoiceResults(parsed, filename, invoiceDate) {
   const datePart = invoiceDate ? ` · Invoice date: ${invoiceDate}` : "";
   document.getElementById("invoice-result-sub").textContent = `${vendor ? vendor + " · " : ""}${filename}${datePart}`;
 
-  const UNITS = ["lb","oz_dry","kg","g","fl_oz","ml","l","gal","each","case"];
+  const UNITS = ["lb","oz_dry","kg","g","fl_oz","ml","l","qt","gal","each","case"];
   const tbody = document.getElementById("invoice-tbody");
 
   tbody.innerHTML = items.map((item, i) => {
