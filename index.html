@@ -261,6 +261,16 @@
           </div>
         </div>
 
+        <div style="font-size:0.72rem; font-weight:500; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-3); margin:16px 0 8px;">Staff Education</div>
+        <div class="field">
+          <label>Description</label>
+          <textarea id="recipe-description" rows="2" style="width:100%;" placeholder="Short description of the dish — flavor profile, plating, vibe…"></textarea>
+        </div>
+        <div class="field" style="margin-top:12px;">
+          <label>Pickup / Modifications</label>
+          <textarea id="recipe-pickup-mods" rows="5" style="width:100%;" placeholder="Pickup notes and common modifications for the line…"></textarea>
+        </div>
+
         <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
           <button class="primary" id="save-recipe-btn">✓ Save to Inventory</button>
           <button class="secondary" id="clear-builder-btn">Clear</button>
@@ -490,7 +500,23 @@
     <div class="actions" style="margin-top:14px;">
       <button class="secondary" id="rm-edit">Edit / Load</button>
       <button class="danger" id="rm-delete">Delete</button>
+      <button class="secondary" id="rm-summary">📋 Summary</button>
       <button class="secondary" id="rm-close">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE SUMMARY MODAL -->
+<div class="modal-bg" id="recipe-summary-modal-bg">
+  <div class="modal" style="max-width:560px;">
+    <h2 id="recipe-summary-modal-title">Recipe Summary</h2>
+    <p style="font-size:0.82rem; color:var(--text-2); margin:-8px 0 10px;">
+      Copy this and paste it into staff education — no costs or pricing included.
+    </p>
+    <textarea id="recipe-summary-modal-text" readonly rows="16" style="width:100%; resize:vertical; white-space:pre-wrap; background:var(--bg-3);"></textarea>
+    <div class="actions" style="margin-top:14px;">
+      <button class="primary" id="rsm-copy">📋 Copy to Clipboard</button>
+      <button class="secondary" id="rsm-close">Close</button>
     </div>
   </div>
 </div>
@@ -1115,6 +1141,8 @@ document.getElementById("clear-builder-btn").addEventListener("click", () => {
   document.getElementById("recipe-price").value = "";
   document.getElementById("recipe-target-cogs").value = "28";
   document.getElementById("recipe-portions").value = "1";
+  document.getElementById("recipe-description").value = "";
+  document.getElementById("recipe-pickup-mods").value = "";
   builderRows = [];
   addIngRow();
   updateCostSummary();
@@ -1127,6 +1155,8 @@ document.getElementById("save-recipe-btn").addEventListener("click", () => {
   const portions = Math.max(1, parseInt(document.getElementById("recipe-portions").value) || 1);
   const menuPrice = parseFloat(document.getElementById("recipe-price").value) || 0;
   const targetCogs = parseFloat(document.getElementById("recipe-target-cogs").value) || 28;
+  const description = document.getElementById("recipe-description").value.trim();
+  const pickupMods = document.getElementById("recipe-pickup-mods").value.trim();
 
   let totalCost = 0;
   const rows = builderRows.filter(r => r.ingId && r.qty).map(r => {
@@ -1148,6 +1178,8 @@ document.getElementById("save-recipe-btn").addEventListener("click", () => {
     totalCost,
     costPerPortion: totalCost / portions,
     cogs: menuPrice > 0 ? (totalCost / portions / menuPrice) * 100 : null,
+    description,
+    pickupMods,
     savedAt: new Date().toISOString(),
   };
 
@@ -1165,6 +1197,8 @@ document.getElementById("save-recipe-btn").addEventListener("click", () => {
   document.getElementById("recipe-price").value = "";
   document.getElementById("recipe-target-cogs").value = "28";
   document.getElementById("recipe-portions").value = "1";
+  document.getElementById("recipe-description").value = "";
+  document.getElementById("recipe-pickup-mods").value = "";
   builderRows = [];
   addIngRow();
   updateCostSummary();
@@ -1277,6 +1311,8 @@ document.getElementById("rm-edit").addEventListener("click", () => {
   document.getElementById("recipe-price").value = r.menuPrice || "";
   document.getElementById("recipe-target-cogs").value = r.targetCogs || 28;
   document.getElementById("recipe-portions").value = r.portions || 1;
+  document.getElementById("recipe-description").value = r.description || "";
+  document.getElementById("recipe-pickup-mods").value = r.pickupMods || "";
   builderRows = r.rows.map(row => ({ id: uid(), ingId: row.ingId, qty: row.qty, unit: row.unit }));
   renderBuilderRows();
   document.getElementById("recipe-modal-bg").classList.remove("show");
@@ -1294,6 +1330,33 @@ document.getElementById("rm-delete").addEventListener("click", async () => {
   document.getElementById("recipe-modal-bg").classList.remove("show");
   renderRecipes();
   showToast("Recipe deleted");
+});
+
+document.getElementById("rm-summary").addEventListener("click", () => {
+  const r = state.recipes.find(x => x.id === viewingRecipeId);
+  if (!r) return;
+  const lines = [r.name.toUpperCase(), ""];
+  if (r.description) { lines.push(r.description, ""); }
+  lines.push("INGREDIENTS");
+  r.rows.forEach(row => lines.push(`• ${row.qty} ${UNIT_LABELS[row.unit] || row.unit} ${row.ingName}`));
+  if (r.pickupMods) { lines.push("", "PICKUP / MODIFICATIONS", r.pickupMods); }
+  document.getElementById("recipe-summary-modal-title").textContent = r.name;
+  document.getElementById("recipe-summary-modal-text").value = lines.join("\n");
+  document.getElementById("recipe-summary-modal-bg").classList.add("show");
+});
+
+document.getElementById("rsm-close").addEventListener("click", () => document.getElementById("recipe-summary-modal-bg").classList.remove("show"));
+document.getElementById("recipe-summary-modal-bg").addEventListener("click", e => { if (e.target === document.getElementById("recipe-summary-modal-bg")) document.getElementById("recipe-summary-modal-bg").classList.remove("show"); });
+
+document.getElementById("rsm-copy").addEventListener("click", () => {
+  const ta = document.getElementById("recipe-summary-modal-text");
+  navigator.clipboard.writeText(ta.value).then(() => {
+    showToast("Copied to clipboard!");
+  }).catch(() => {
+    ta.select();
+    try { document.execCommand("copy"); showToast("Copied to clipboard!"); }
+    catch(e) { showToast("Could not copy — select the text and copy manually."); }
+  });
 });
 
 // ── In-House ──────────────────────────────────────────────────────────────────
