@@ -293,6 +293,7 @@
           <option value="vendor">Sort: Vendor</option>
           <option value="category">Sort: Category</option>
         </select>
+        <button class="ghost" id="simplify-names-btn">✨ Simplify Names</button>
         <button class="primary" id="add-ing-btn">+ Add Ingredient</button>
       </div>
       <div id="ingredients-list" class="stack"></div>
@@ -416,6 +417,13 @@
     <div class="field">
       <label>Name</label>
       <input type="text" id="im-name" placeholder="e.g. 00 Flour" />
+    </div>
+    <div class="field">
+      <label>Staff Summary Name <span style="font-weight:400; text-transform:none; letter-spacing:0;">(optional — shown in recipe summaries instead of the full name)</span></label>
+      <div style="display:flex; gap:8px;">
+        <input type="text" id="im-simple-name" placeholder="e.g. flour" style="flex:1;" />
+        <button class="ghost" id="im-suggest-name" type="button" style="white-space:nowrap;">✨ Suggest</button>
+      </div>
     </div>
     <div class="field">
       <label>Category</label>
@@ -872,6 +880,7 @@ function openIngModal(id) {
   document.getElementById("ing-modal-title").textContent = id ? "Edit Ingredient" : "Add Ingredient";
   const ing = id ? state.ingredients.find(i => i.id === id) : null;
   document.getElementById("im-name").value = ing?.name || "";
+  document.getElementById("im-simple-name").value = ing?.simpleName || "";
   populateCatFilter();
   const catSel = document.getElementById("im-category");
   const catCustom = document.getElementById("im-category-custom");
@@ -946,6 +955,7 @@ document.getElementById("im-save").addEventListener("click", () => {
   const obj = {
     id: editingIngId || uid(),
     name,
+    simpleName: document.getElementById("im-simple-name").value.trim(),
     category: (document.getElementById("im-category").value === "__new__"
       ? document.getElementById("im-category-custom").value.trim()
       : document.getElementById("im-category").value.trim()),
@@ -1338,7 +1348,11 @@ document.getElementById("rm-summary").addEventListener("click", () => {
   const lines = [r.name.toUpperCase(), ""];
   if (r.description) { lines.push(r.description, ""); }
   lines.push("INGREDIENTS");
-  r.rows.forEach(row => lines.push(`• ${row.qty} ${UNIT_LABELS[row.unit] || row.unit} ${row.ingName}`));
+  r.rows.forEach(row => {
+    const ing = state.ingredients.find(i => i.id === row.ingId);
+    const label = (ing?.simpleName && ing.simpleName.trim()) || fallbackSimpleName(row.ingName);
+    lines.push(`• ${label}`);
+  });
   if (r.pickupMods) { lines.push("", "PICKUP / MODIFICATIONS", r.pickupMods); }
   document.getElementById("recipe-summary-modal-title").textContent = r.name;
   document.getElementById("recipe-summary-modal-text").value = lines.join("\n");
@@ -1658,6 +1672,97 @@ uploadArea.addEventListener("drop", e => { e.preventDefault(); uploadArea.classL
 document.getElementById("invoice-file-input").addEventListener("change", e => { if (e.target.files[0]) processInvoiceFile(e.target.files[0]); });
 document.getElementById("invoice-reset-btn").addEventListener("click", invReset);
 document.getElementById("invoice-error-reset").addEventListener("click", invReset);
+
+// ── Ingredient name simplification (for staff summaries) ───────────────────────
+function fallbackSimpleName(name) {
+  return String(name || "").replace(/\([^)]*\)/g, "").split(",")[0].trim();
+}
+
+const SIMPLIFY_PROMPT = `You clean up wholesale ingredient names into short, natural names a line cook would recognize on a recipe card.
+Rules:
+- Remove brand names, pack/case sizes, quantities, and grading terms (e.g. "Choice", "Prime", "USDA #1").
+- Keep words that distinguish what the ingredient actually is when it matters for cooking (e.g. "Sugar Snap" peas is a different item from regular peas).
+- Drop generic descriptors that don't change what the item is for kitchen purposes (fat %, "Whole Milk" on cheese, etc.).
+- Output lowercase, singular unless the item is naturally referred to in plural (e.g. "peas").
+- Return ONLY a JSON array of strings, same order and count as the input, no other text.
+
+Examples:
+"Peas, Sugar Snap (10 lb case)" -> "sugar snap peas"
+"Mozzarella, Grande Whole Milk Shredded (30 lb)" -> "mozzarella"
+"Butter, Plugra Unsalted 82%" -> "butter"
+"Lemons, Choice (115ct case)" -> "lemon"
+"Filled Pasta Dough (In-House)" -> "pasta dough"`;
+
+async function claudeSimplifyNames(names) {
+  const prompt = `${SIMPLIFY_PROMPT}\n\nInput:\n${JSON.stringify(names)}\n\nReturn ONLY a JSON array of ${names.length} strings, same order, no other text.`;
+  const resp = await fetch("/.netlify/functions/claude", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 4096,
+      messages: [{ role: "user", content: [{ type: "text", text: prompt }] }],
+    }),
+  });
+  if (!resp.ok) {
+    const err = await resp.json().catch(() => ({}));
+    throw new Error(err.error?.message || `API error ${resp.status}`);
+  }
+  const data = await resp.json();
+  const raw = data.content[0].text.trim();
+  const arr = JSON.parse(raw.replace(/^```json\n?|```$/g, "").trim());
+  if (!Array.isArray(arr) || arr.length !== names.length) throw new Error("Unexpected response shape from Claude");
+  return arr;
+}
+
+document.getElementById("im-suggest-name").addEventListener("click", async () => {
+  const raw = document.getElementById("im-name").value.trim();
+  if (!raw) { alert("Enter the ingredient name first."); return; }
+  const btn = document.getElementById("im-suggest-name");
+  const origText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = "…";
+  try {
+    const [suggestion] = await claudeSimplifyNames([raw]);
+    document.getElementById("im-simple-name").value = suggestion;
+  } catch (e) {
+    showToast("Suggest failed: " + e.message);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = origText;
+  }
+});
+
+document.getElementById("simplify-names-btn").addEventListener("click", async () => {
+  const pending = state.ingredients.filter(i => !i.simpleName || !i.simpleName.trim());
+  if (!pending.length) { showToast("All ingredients already have simple names"); return; }
+  if (!confirm(`Generate simple staff-facing names for ${pending.length} ingredient(s) using Claude?`)) return;
+  const btn = document.getElementById("simplify-names-btn");
+  const origText = btn.textContent;
+  btn.disabled = true;
+  const CHUNK = 75;
+  let done = 0;
+  try {
+    for (let i = 0; i < pending.length; i += CHUNK) {
+      const chunk = pending.slice(i, i + CHUNK);
+      btn.textContent = `Simplifying… (${done}/${pending.length})`;
+      const simplified = await claudeSimplifyNames(chunk.map(c => c.name));
+      chunk.forEach((ing, idx) => {
+        const target = state.ingredients.find(x => x.id === ing.id);
+        if (target) target.simpleName = simplified[idx];
+      });
+      done += chunk.length;
+    }
+    scheduleSave();
+    renderIngredients();
+    showToast(`Simplified ${done} ingredient name${done === 1 ? "" : "s"}`);
+  } catch (e) {
+    showToast("Simplify failed: " + e.message);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = origText;
+  }
+});
 
 async function processInvoiceFile(file) {
   invShow("invoice-processing");
