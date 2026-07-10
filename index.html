@@ -628,6 +628,10 @@ let saveTimer = null, saveStatus = "idle", lastInteractAt = 0;
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
 function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c])); }
 
+// Strips a trailing "(pack size)" descriptor so invoice re-scans match the existing
+// ingredient instead of creating a near-duplicate (e.g. "Vinegar, Banyuls (500 ml)").
+function normalizeIngName(s) { return String(s ?? "").trim().replace(/\s*\([^)]*\)\s*$/, "").toLowerCase(); }
+
 function fmt$(n) { const v = Number(n) || 0; return (v < 0 ? "-$" : "$") + Math.abs(v).toFixed(2); }
 function fmtPct(n) { return (Number(n) || 0).toFixed(1) + "%"; }
 
@@ -1830,7 +1834,7 @@ function renderInvoiceResults(parsed, filename, invoiceDate) {
   const tbody = document.getElementById("invoice-tbody");
 
   tbody.innerHTML = items.map((item, i) => {
-    const existing = state.ingredients.find(x => x.name.toLowerCase() === item.name.toLowerCase());
+    const existing = state.ingredients.find(x => normalizeIngName(x.name) === normalizeIngName(item.name));
     const willUpdate = !!existing;
     return `<tr class="inv-row${willUpdate ? " will-update" : ""}" data-idx="${i}">
       <td style="text-align:center;"><input type="checkbox" class="inv-check" checked /></td>
@@ -1871,7 +1875,7 @@ document.getElementById("invoice-add-btn").addEventListener("click", () => {
       yieldPct: parseFloat(row.querySelector(".inv-yield").value) || 100,
       invoiceDate: _invoiceDate || null,
     };
-    const existIdx = state.ingredients.findIndex(x => x.name.toLowerCase() === name.toLowerCase());
+    const existIdx = state.ingredients.findIndex(x => normalizeIngName(x.name) === normalizeIngName(name));
     if (existIdx >= 0) {
       const old = state.ingredients[existIdx];
       const priceChanged = Math.abs((old.purchaseCost || 0) - ing.purchaseCost) > 0.001 ||
@@ -1887,7 +1891,7 @@ document.getElementById("invoice-add-btn").addEventListener("click", () => {
           vendor: old.vendor || "",
         });
       }
-      state.ingredients[existIdx] = { ...old, ...ing, id: old.id, priceHistory: history };
+      state.ingredients[existIdx] = { ...old, ...ing, id: old.id, name: old.name, priceHistory: history };
       skipped++;
     } else {
       state.ingredients.push({ ...ing, priceHistory: [] });
