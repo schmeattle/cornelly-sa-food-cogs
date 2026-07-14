@@ -1182,6 +1182,9 @@ document.getElementById("save-recipe-btn").addEventListener("click", () => {
 
   if (rows.length === 0) { alert("Add at least one ingredient."); return; }
 
+  const existingIdx = editingRecipeId ? state.recipes.findIndex(r => r.id === editingRecipeId) : -1;
+  const existing = existingIdx >= 0 ? state.recipes[existingIdx] : null;
+  const now = new Date().toISOString();
   const recipe = {
     id: editingRecipeId || uid(),
     name,
@@ -1194,12 +1197,13 @@ document.getElementById("save-recipe-btn").addEventListener("click", () => {
     cogs: menuPrice > 0 ? (totalCost / portions / menuPrice) * 100 : null,
     description,
     pickupMods,
-    savedAt: new Date().toISOString(),
+    createdAt: existing?.createdAt || now,
+    editHistory: existing ? [...(existing.editHistory || []), now] : [],
+    savedAt: now,
   };
 
   if (editingRecipeId) {
-    const idx = state.recipes.findIndex(r => r.id === editingRecipeId);
-    if (idx >= 0) state.recipes[idx] = recipe;
+    if (existingIdx >= 0) state.recipes[existingIdx] = recipe;
   } else {
     state.recipes.unshift(recipe);
   }
@@ -1248,7 +1252,7 @@ function renderRecipes() {
         <div class="row between">
           <div>
             <div class="rname">${esc(r.name)}</div>
-            <div class="rmeta">${r.rows.length} ingredient${r.rows.length === 1 ? "" : "s"} · ${r.portions} portion${r.portions === 1 ? "" : "s"}</div>
+            <div class="rmeta">${r.rows.length} ingredient${r.rows.length === 1 ? "" : "s"} · ${r.portions} portion${r.portions === 1 ? "" : "s"}${r.createdAt ? ` · Created ${new Date(r.createdAt).toLocaleDateString("en-US", {month:"short",day:"numeric",year:"numeric"})}` : ""}</div>
           </div>
           <div style="text-align:right;">
             <div style="font-weight:700; font-size:1rem;">${fmt$(r.costPerPortion)}<span style="font-size:0.78rem; color:var(--text-3); font-weight:400;"> /portion</span></div>
@@ -1309,7 +1313,10 @@ function openRecipeDetail(id) {
         </tfoot>
       </table>
     </div>
-    ${r.savedAt ? `<div style="margin-top:8px; font-size:0.75rem; color:var(--text-3);">Saved ${new Date(r.savedAt).toLocaleDateString("en-US", {month:"short",day:"numeric",year:"numeric"})}</div>` : ""}
+    ${r.createdAt ? `<div style="margin-top:8px; font-size:0.75rem; color:var(--text-3);">
+      <div>Created ${new Date(r.createdAt).toLocaleString("en-US", {month:"short",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit"})}</div>
+      ${(r.editHistory || []).map(t => `<div>Edited ${new Date(t).toLocaleString("en-US", {month:"short",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit"})}</div>`).join("")}
+    </div>` : ""}
   `;
   document.getElementById("recipe-modal-bg").classList.add("show");
 }
