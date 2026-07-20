@@ -629,6 +629,15 @@ const API = {
     } catch {}
     return localGet();
   },
+  // Same as getData but never falls back to the local cache — callers need to
+  // know whether this genuinely reflects what's on the server right now.
+  async getFreshData() {
+    try {
+      const r = await fetch("/api/data", { cache: "no-store" });
+      if (r.ok) return await r.json();
+    } catch {}
+    return null;
+  },
   async saveData(s) {
     localStorage.setItem("fc_state", JSON.stringify(s));
     try {
@@ -638,7 +647,39 @@ const API = {
 };
 
 let state = { ingredients: [], recipes: [], inHousePreps: [] };
+// Snapshot of `state` as of the last successful load/save — the common ancestor used to
+// three-way-merge concurrent edits from other devices instead of blindly overwriting them.
+let baselineState = null;
 let saveTimer = null, saveStatus = "idle", lastInteractAt = 0;
+
+// Three-way merge of an id-keyed collection: `base` is what this device last knew the
+// server to hold, `mine` is this device's current (possibly edited) copy, `theirs` is
+// what the server holds right now (possibly changed by another device in the meantime).
+// Rule: an active local add/edit on this device always wins; otherwise adopt whatever
+// changed remotely; deletions are honored unless the other side edited that same item
+// after our baseline (then we keep their edit rather than silently destroying it).
+function mergeById(base, mine, theirs) {
+  const baseMap = new Map((base || []).map(x => [x.id, x]));
+  const mineMap = new Map((mine || []).map(x => [x.id, x]));
+  const theirMap = new Map((theirs || []).map(x => [x.id, x]));
+  const allIds = new Set([...baseMap.keys(), ...mineMap.keys(), ...theirMap.keys()]);
+  const eq = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+  const result = [];
+  for (const id of allIds) {
+    const b = baseMap.get(id), m = mineMap.get(id), t = theirMap.get(id);
+    if (m && !b) { result.push(m); continue; }                    // added locally
+    if (t && !b && !m) { result.push(t); continue; }               // added remotely
+    if (!b && m && t) { result.push(m); continue; }                // same id added both sides (collision) — keep mine
+    if (b && !m && !t) continue;                                   // deleted both sides
+    if (b && !m && t) { if (!eq(t, b)) result.push(t); continue; }  // I deleted; keep their edit if they changed it
+    if (b && m && !t) { if (!eq(m, b)) result.push(m); continue; }  // they deleted; keep my edit if I changed it
+    // present in all three
+    if (!eq(m, b)) result.push(m);       // I actively edited — mine wins
+    else if (!eq(t, b)) result.push(t);  // untouched by me, adopt their change
+    else result.push(m);                 // unchanged everywhere
+  }
+  return result;
+}
 
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
 function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c])); }
@@ -671,9 +712,25 @@ function scheduleSave() {
 async function doSave() {
   setSaveStatus("saving");
   try {
+    // Pull whatever's on the server right now — another device may have saved since we
+    // loaded — and merge it with our own edits instead of clobbering it wholesale.
+    const serverState = await API.getFreshData();
+    const base = baselineState || { ingredients: [], recipes: [], inHousePreps: [] };
+    const theirs = serverState || base;
+    state.ingredients = mergeById(base.ingredients, state.ingredients, theirs.ingredients);
+    state.recipes = mergeById(base.recipes, state.recipes, theirs.recipes);
+    state.inHousePreps = mergeById(base.inHousePreps, state.inHousePreps, theirs.inHousePreps);
+
     await API.saveData(state);
+    baselineState = JSON.parse(JSON.stringify(state));
     setSaveStatus("saved");
     setTimeout(() => { if (saveStatus === "saved" && Date.now() - lastInteractAt > 1500) setSaveStatus("idle"); }, 2500);
+
+    // Reflect anything adopted from another device in the currently visible lists.
+    renderIngredients();
+    populateCatFilter();
+    renderRecipes();
+    renderInHouseList();
   } catch (e) {
     setSaveStatus("error");
   }
@@ -684,6 +741,7 @@ async function loadAndStart() {
   document.getElementById("app").style.display = "block";
   const data = await API.getData();
   state = Object.assign({ ingredients: [], recipes: [], inHousePreps: [] }, data || {});
+  baselineState = JSON.parse(JSON.stringify(state));
   renderIngredients();
   renderRecipes();
   renderInHouseList();
