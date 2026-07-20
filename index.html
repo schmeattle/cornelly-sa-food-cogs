@@ -335,6 +335,13 @@
         </div>
         <div id="ih-ing-rows"></div>
         <button class="ghost" id="ih-add-row" style="margin-top:8px; width:100%;">+ Add Ingredient</button>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:12px; padding:10px 12px; background:var(--bg-3); border-radius:var(--radius-sm); font-size:0.88rem; flex-wrap:wrap;">
+          <span>Ingredient Total <span style="color:var(--text-3); font-weight:400;">(auto-summed from lines above)</span></span>
+          <span style="display:flex; align-items:center; gap:10px;">
+            <strong id="ih-ing-total">—</strong>
+            <button class="ghost" id="ih-use-total-btn" type="button" style="display:none; padding:4px 10px; font-size:0.78rem;">Use as Yield</button>
+          </span>
+        </div>
         <div class="cost-summary" id="ih-cost-summary" style="margin-top:14px;">
           <div class="cost-row"><span>Total Batch Cost</span><span id="ih-total-cost">—</span></div>
           <div class="cost-row"><span id="ih-cpp-label">Cost per lb</span><span id="ih-cpp">—</span></div>
@@ -1595,6 +1602,55 @@ function onIhSearch(inp) {
   });
 }
 
+// Sums the weight- and volume-type ingredient lines separately (each/bunch items
+// aren't summable into a weight or volume and are excluded from the auto-total).
+function ihIngredientTotals() {
+  let weightG = 0, volumeMl = 0;
+  ihRows.forEach(row => {
+    if (!row.ingId || !row.qty) return;
+    const base = toBase(Number(row.qty) || 0, row.unit);
+    if (base.type === "weight") weightG += base.val;
+    else if (base.type === "volume") volumeMl += base.val;
+  });
+  return { weightG, volumeMl };
+}
+
+function updateIhIngredientTotal() {
+  const { weightG, volumeMl } = ihIngredientTotals();
+  const parts = [];
+  if (weightG > 0) parts.push(`${(weightG / 453.592).toFixed(2)} lb (${(weightG / 1000).toFixed(2)} kg)`);
+  if (volumeMl > 0) parts.push(`${(volumeMl / 29.5735).toFixed(1)} fl oz (${(volumeMl / 1000).toFixed(2)} L)`);
+  document.getElementById("ih-ing-total").textContent = parts.length ? parts.join(" · ") : "—";
+  document.getElementById("ih-use-total-btn").style.display = parts.length ? "" : "none";
+}
+
+document.getElementById("ih-use-total-btn").addEventListener("click", () => {
+  const { weightG, volumeMl } = ihIngredientTotals();
+  const yieldUnitSel = document.getElementById("ih-yield-unit");
+  const yieldQtyInp = document.getElementById("ih-yield-qty");
+  const curType = toBase(1, yieldUnitSel.value).type;
+
+  if (weightG > 0 && volumeMl > 0 && curType !== "weight" && curType !== "volume") {
+    showToast("Mixed weight & volume ingredients — pick a matching yield unit first");
+    return;
+  }
+  if (curType === "weight" && weightG > 0) {
+    yieldQtyInp.value = fromBase(weightG, "weight", yieldUnitSel.value).toFixed(2);
+  } else if (curType === "volume" && volumeMl > 0) {
+    yieldQtyInp.value = fromBase(volumeMl, "volume", yieldUnitSel.value).toFixed(2);
+  } else if (weightG > 0) {
+    yieldUnitSel.value = "lb";
+    yieldQtyInp.value = (weightG / 453.592).toFixed(2);
+  } else if (volumeMl > 0) {
+    yieldUnitSel.value = "fl_oz";
+    yieldQtyInp.value = (volumeMl / 29.5735).toFixed(2);
+  } else {
+    return;
+  }
+  updateIhCost();
+  showToast("Yield quantity set from ingredient total");
+});
+
 function updateIhCost() {
   const yieldQty = parseFloat(document.getElementById("ih-yield-qty").value) || 0;
   const yieldUnit = document.getElementById("ih-yield-unit").value;
@@ -1613,6 +1669,7 @@ function updateIhCost() {
   } else {
     document.getElementById("ih-cpp").textContent = "—";
   }
+  updateIhIngredientTotal();
 }
 
 document.getElementById("ih-yield-qty").addEventListener("input", updateIhCost);
