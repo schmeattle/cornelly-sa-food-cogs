@@ -95,6 +95,8 @@
   .ing-row input, .ing-row select { width: 100%; }
   .ing-row .row-cost { font-size: 0.82rem; font-variant-numeric: tabular-nums; color: var(--text-2); text-align: right; white-space: nowrap; }
   .ing-row .row-cost.has-cost { color: var(--text); font-weight: 500; }
+  .ing-row .row-cost.mismatch { color: var(--bad); font-weight: 600; cursor: help; }
+  .ing-row .ing-unit-sel.mismatch { border-color: var(--bad); background: #fee2e2; }
   .ing-list-header { display: grid; grid-template-columns: 1fr 80px 140px 70px 36px; gap: 6px; margin-bottom: 4px; padding: 0 2px; }
   .ing-list-header span { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-3); font-weight: 500; }
   .cost-summary { background: var(--bg-3); border-radius: var(--radius-sm); padding: 14px; margin-top: 14px; }
@@ -727,6 +729,20 @@ function costPerBase(ing) {
   return { cpb: cost / (base.val * yld), type: base.type };
 }
 
+// Whether a recipe row's chosen unit is even compatible with how the ingredient is priced
+// (e.g. picking kg/lb for an ingredient priced "each" — there's no conversion between the two).
+function rowUnitMismatch(row) {
+  const ing = state.ingredients.find(i => i.id === row.ingId);
+  if (!ing || !row.unit) return false;
+  const cpbObj = costPerBase(ing);
+  if (!cpbObj) return false;
+  return toBase(1, row.unit).type !== cpbObj.type;
+}
+
+function unitTypeLabel(type) {
+  return type === "weight" ? "weight (g/kg/lb/oz)" : type === "volume" ? "volume (ml/l/fl oz/qt/gal)" : "each/bunch";
+}
+
 // Cost for a recipe row {ingId, qty, unit}
 function rowCost(row) {
   const ing = state.ingredients.find(i => i.id === row.ingId);
@@ -734,8 +750,9 @@ function rowCost(row) {
   const cpbObj = costPerBase(ing);
   if (!cpbObj) return null;
   const used = toBase(Number(row.qty) || 0, row.unit);
-  if (used.type !== cpbObj.type && used.type !== "each" && cpbObj.type !== "each") return null;
-  if (used.type === "each" || cpbObj.type === "each") {
+  // Unit must match how the ingredient is actually priced — "each" can't stand in for a weight/volume unit or vice versa.
+  if (used.type !== cpbObj.type) return null;
+  if (used.type === "each") {
     // price per each
     const purchaseBase = toBase(Number(ing.purchaseQty) || 1, ing.purchaseUnit);
     const costEach = (Number(ing.purchaseCost) || 0) / (purchaseBase.val || 1);
@@ -1002,10 +1019,16 @@ function addIngRow() {
 function renderBuilderRows() {
   const container = document.getElementById("ing-rows");
   container.innerHTML = builderRows.map((row) => {
-    const c = (row.ingId && row.qty) ? rowCost(row) : null;
-    const costHtml = c !== null
-      ? `<span class="row-cost has-cost">${fmt$(c)}</span>`
-      : `<span class="row-cost">—</span>`;
+    const mismatch = row.ingId ? rowUnitMismatch(row) : false;
+    const c = (row.ingId && row.qty && !mismatch) ? rowCost(row) : null;
+    const ing = row.ingId ? state.ingredients.find(i => i.id === row.ingId) : null;
+    const cpbObj = ing ? costPerBase(ing) : null;
+    const mismatchTitle = mismatch && cpbObj ? `This ingredient is priced by ${unitTypeLabel(cpbObj.type)} — pick a compatible unit` : "";
+    const costHtml = mismatch
+      ? `<span class="row-cost mismatch" title="${esc(mismatchTitle)}">⚠ wrong unit</span>`
+      : c !== null
+        ? `<span class="row-cost has-cost">${fmt$(c)}</span>`
+        : `<span class="row-cost">—</span>`;
     return `
     <div class="ing-row" data-row="${row.id}">
       <div class="ac-wrap">
@@ -1013,7 +1036,7 @@ function renderBuilderRows() {
         <div class="ac-drop" id="ac-${row.id}" style="display:none;"></div>
       </div>
       <input type="number" class="ing-qty-inp" data-row="${row.id}" value="${row.qty}" placeholder="0" step="any" min="0" inputmode="decimal" />
-      <select class="ing-unit-sel" data-row="${row.id}">
+      <select class="ing-unit-sel ${mismatch ? "mismatch" : ""}" data-row="${row.id}" title="${esc(mismatchTitle)}">
         ${RECIPE_UNITS.map(u => `<option value="${u.value}" ${u.value === row.unit ? "selected" : ""}>${u.label}</option>`).join("")}
       </select>
       ${costHtml}
@@ -1105,11 +1128,31 @@ function selectIng(rowId, ingId, inp) {
 }
 
 function updateRowCostCell(row) {
-  const el = document.querySelector(`.ing-row[data-row="${row.id}"] .row-cost`);
-  if (!el) return;
-  const c = (row.ingId && row.qty) ? rowCost(row) : null;
-  el.textContent = c !== null ? fmt$(c) : "—";
-  el.classList.toggle("has-cost", c !== null);
+  const rowEl = document.querySelector(`.ing-row[data-row="${row.id}"]`);
+  if (!rowEl) return;
+  const el = rowEl.querySelector(".row-cost");
+  const sel = rowEl.querySelector(".ing-unit-sel");
+  const mismatch = row.ingId ? rowUnitMismatch(row) : false;
+  const ing = row.ingId ? state.ingredients.find(i => i.id === row.ingId) : null;
+  const cpbObj = ing ? costPerBase(ing) : null;
+  const mismatchTitle = mismatch && cpbObj ? `This ingredient is priced by ${unitTypeLabel(cpbObj.type)} — pick a compatible unit` : "";
+
+  if (mismatch) {
+    el.textContent = "⚠ wrong unit";
+    el.title = mismatchTitle;
+    el.classList.remove("has-cost");
+    el.classList.add("mismatch");
+  } else {
+    const c = (row.ingId && row.qty) ? rowCost(row) : null;
+    el.textContent = c !== null ? fmt$(c) : "—";
+    el.title = "";
+    el.classList.toggle("has-cost", c !== null);
+    el.classList.remove("mismatch");
+  }
+  if (sel) {
+    sel.classList.toggle("mismatch", mismatch);
+    sel.title = mismatchTitle;
+  }
 }
 
 function updateCostSummary() {
