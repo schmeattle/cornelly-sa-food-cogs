@@ -516,6 +516,19 @@
   </div>
 </div>
 
+<!-- IN-HOUSE PREP DETAIL MODAL -->
+<div class="modal-bg" id="ih-modal-bg">
+  <div class="modal" style="max-width:620px;">
+    <h2 id="ih-modal-title">Prep Detail</h2>
+    <div id="ih-modal-body"></div>
+    <div class="actions" style="margin-top:14px;">
+      <button class="secondary" id="ihm-edit">Edit / Load</button>
+      <button class="danger" id="ihm-delete">Delete</button>
+      <button class="secondary" id="ihm-close">Close</button>
+    </div>
+  </div>
+</div>
+
 <!-- RECIPE SUMMARY MODAL -->
 <div class="modal-bg" id="recipe-summary-modal-bg">
   <div class="modal" style="max-width:560px;">
@@ -1626,33 +1639,79 @@ function renderInHouseList() {
   list.innerHTML = state.inHousePreps.map(p => {
     const unitLabel = UNIT_LABELS[p.yieldUnit] || p.yieldUnit;
     return `
-      <div class="card">
+      <div class="card recipe-card" data-ih="${p.id}" style="cursor:pointer;">
         <div class="row between">
           <div>
-            <div style="font-weight:600; font-size:1rem;">${esc(p.name)}</div>
-            <div style="font-size:0.82rem; color:var(--text-2); margin-top:2px;">
-              Yields ${p.yieldQty} ${unitLabel} · ${p.rows.length} ingredient${p.rows.length === 1 ? "" : "s"}
-            </div>
-            <div style="font-size:0.82rem; margin-top:4px; display:flex; gap:12px; flex-wrap:wrap;">
-              <span>Total cost: <strong>${fmt$(p.totalCost)}</strong></span>
-              <span>Per ${unitLabel}: <strong>${fmt$(p.costPerUnit)}</strong></span>
-            </div>
+            <div class="rname">${esc(p.name)}</div>
+            <div class="rmeta">Yields ${p.yieldQty} ${unitLabel} · ${p.rows.length} ingredient${p.rows.length === 1 ? "" : "s"}</div>
           </div>
-          <div style="display:flex; gap:4px; flex-shrink:0;">
-            <button class="icon" data-ih-edit="${p.id}" aria-label="Edit">✎</button>
-            <button class="icon" data-ih-del="${p.id}" aria-label="Delete">✕</button>
+          <div style="text-align:right;">
+            <div style="font-weight:700; font-size:1rem;">${fmt$(p.costPerUnit)}<span style="font-size:0.78rem; color:var(--text-3); font-weight:400;"> /${unitLabel}</span></div>
+            <div style="color:var(--text-3); font-size:0.8rem;">${fmt$(p.totalCost)} total</div>
           </div>
         </div>
       </div>`;
   }).join("");
 
-  list.querySelectorAll("[data-ih-edit]").forEach(btn => {
-    btn.addEventListener("click", () => loadIhForEdit(btn.dataset.ihEdit));
-  });
-  list.querySelectorAll("[data-ih-del]").forEach(btn => {
-    btn.addEventListener("click", () => deleteInHouse(btn.dataset.ihDel));
+  list.querySelectorAll(".recipe-card[data-ih]").forEach(el => {
+    el.addEventListener("click", () => openIhDetail(el.dataset.ih));
   });
 }
+
+let viewingIhId = null;
+function openIhDetail(id) {
+  viewingIhId = id;
+  const p = state.inHousePreps.find(x => x.id === id);
+  if (!p) return;
+  const unitLabel = UNIT_LABELS[p.yieldUnit] || p.yieldUnit;
+  document.getElementById("ih-modal-title").textContent = p.name;
+  document.getElementById("ih-modal-body").innerHTML = `
+    <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:14px; font-size:0.88rem; color:var(--text-2);">
+      <span>Yield: <strong style="color:var(--text);">${p.yieldQty} ${unitLabel}</strong></span>
+      <span>Total cost: <strong style="color:var(--text);">${fmt$(p.totalCost)}</strong></span>
+      <span>Cost per ${unitLabel}: <strong style="color:var(--text);">${fmt$(p.costPerUnit)}</strong></span>
+    </div>
+    <div class="card" style="padding:0;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.87rem;">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding:8px; color:var(--text-2); font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em; border-bottom:1px solid var(--border);">Ingredient</th>
+            <th style="text-align:right; padding:8px; color:var(--text-2); font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em; border-bottom:1px solid var(--border);">Qty</th>
+            <th style="text-align:right; padding:8px; color:var(--text-2); font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em; border-bottom:1px solid var(--border);">Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${p.rows.map(row => `
+            <tr>
+              <td style="padding:9px 8px; border-bottom:1px solid var(--border);">${esc(row.ingName)}</td>
+              <td style="padding:9px 8px; border-bottom:1px solid var(--border); text-align:right; font-variant-numeric:tabular-nums;">${row.qty} ${UNIT_LABELS[row.unit] || row.unit}</td>
+              <td style="padding:9px 8px; border-bottom:1px solid var(--border); text-align:right; font-variant-numeric:tabular-nums;">${fmt$(row.cost)}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2" style="padding:9px 8px; font-weight:700;">Total</td>
+            <td style="padding:9px 8px; text-align:right; font-weight:700; font-variant-numeric:tabular-nums;">${fmt$(p.totalCost)}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    ${p.savedAt ? `<div style="margin-top:8px; font-size:0.75rem; color:var(--text-3);">Saved ${new Date(p.savedAt).toLocaleString("en-US", {month:"short",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit"})}</div>` : ""}
+  `;
+  document.getElementById("ih-modal-bg").classList.add("show");
+}
+
+document.getElementById("ihm-close").addEventListener("click", () => document.getElementById("ih-modal-bg").classList.remove("show"));
+document.getElementById("ih-modal-bg").addEventListener("click", e => { if (e.target === document.getElementById("ih-modal-bg")) document.getElementById("ih-modal-bg").classList.remove("show"); });
+document.getElementById("ihm-edit").addEventListener("click", () => {
+  document.getElementById("ih-modal-bg").classList.remove("show");
+  loadIhForEdit(viewingIhId);
+});
+document.getElementById("ihm-delete").addEventListener("click", () => {
+  document.getElementById("ih-modal-bg").classList.remove("show");
+  deleteInHouse(viewingIhId);
+});
 
 function loadIhForEdit(id) {
   const p = state.inHousePreps.find(x => x.id === id);
