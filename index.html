@@ -331,7 +331,7 @@
           </div>
         </div>
         <div class="ing-list-header">
-          <span>Ingredient</span><span>Qty</span><span>Unit</span><span></span>
+          <span>Ingredient</span><span>Qty</span><span>Unit</span><span>Cost</span><span></span>
         </div>
         <div id="ih-ing-rows"></div>
         <button class="ghost" id="ih-add-row" style="margin-top:8px; width:100%;">+ Add Ingredient</button>
@@ -1516,7 +1516,18 @@ function ihAddRow() {
 
 function renderIhRows() {
   const container = document.getElementById("ih-ing-rows");
-  container.innerHTML = ihRows.map(row => `
+  container.innerHTML = ihRows.map(row => {
+    const mismatch = row.ingId ? rowUnitMismatch(row) : false;
+    const c = (row.ingId && row.qty && !mismatch) ? rowCost(row) : null;
+    const ing = row.ingId ? state.ingredients.find(i => i.id === row.ingId) : null;
+    const cpbObj = ing ? costPerBase(ing) : null;
+    const mismatchTitle = mismatch && cpbObj ? `This ingredient is priced by ${unitTypeLabel(cpbObj.type)} — pick a compatible unit` : "";
+    const costHtml = mismatch
+      ? `<span class="row-cost mismatch" title="${esc(mismatchTitle)}">⚠ wrong unit</span>`
+      : c !== null
+        ? `<span class="row-cost has-cost">${fmt$(c)}</span>`
+        : `<span class="row-cost">—</span>`;
+    return `
     <div class="ing-row" data-ih-row="${row.id}">
       <div class="ac-wrap">
         <input type="text" class="ih-search-inp" data-row="${row.id}" placeholder="Start typing…"
@@ -1525,12 +1536,14 @@ function renderIhRows() {
         <div class="ac-drop" id="ih-ac-${row.id}" style="display:none;"></div>
       </div>
       <input type="number" class="ih-qty-inp" data-row="${row.id}" value="${row.qty}" placeholder="0" step="any" min="0" inputmode="decimal" />
-      <select class="ih-unit-sel" data-row="${row.id}">
+      <select class="ih-unit-sel ${mismatch ? "mismatch" : ""}" data-row="${row.id}" title="${esc(mismatchTitle)}">
         ${RECIPE_UNITS.map(u => `<option value="${u.value}" ${u.value === row.unit ? "selected" : ""}>${u.label}</option>`).join("")}
       </select>
+      ${costHtml}
       <button class="icon" data-ih-remove="${row.id}">✕</button>
     </div>
-  `).join("");
+  `;
+  }).join("");
 
   container.querySelectorAll(".ih-search-inp").forEach(inp => {
     inp.addEventListener("input", e => onIhSearch(e.target));
@@ -1543,13 +1556,13 @@ function renderIhRows() {
   container.querySelectorAll(".ih-qty-inp").forEach(inp => {
     inp.addEventListener("input", e => {
       const row = ihRows.find(r => r.id === e.target.dataset.row);
-      if (row) { row.qty = e.target.value; updateIhCost(); }
+      if (row) { row.qty = e.target.value; updateIhRowCostCell(row); updateIhCost(); }
     });
   });
   container.querySelectorAll(".ih-unit-sel").forEach(sel => {
     sel.addEventListener("change", e => {
       const row = ihRows.find(r => r.id === e.target.dataset.row);
-      if (row) { row.unit = e.target.value; updateIhCost(); }
+      if (row) { row.unit = e.target.value; updateIhRowCostCell(row); updateIhCost(); }
     });
   });
   container.querySelectorAll("[data-ih-remove]").forEach(btn => {
@@ -1561,6 +1574,34 @@ function renderIhRows() {
     });
   });
   updateIhCost();
+}
+
+function updateIhRowCostCell(row) {
+  const rowEl = document.querySelector(`.ing-row[data-ih-row="${row.id}"]`);
+  if (!rowEl) return;
+  const el = rowEl.querySelector(".row-cost");
+  const sel = rowEl.querySelector(".ih-unit-sel");
+  const mismatch = row.ingId ? rowUnitMismatch(row) : false;
+  const ing = row.ingId ? state.ingredients.find(i => i.id === row.ingId) : null;
+  const cpbObj = ing ? costPerBase(ing) : null;
+  const mismatchTitle = mismatch && cpbObj ? `This ingredient is priced by ${unitTypeLabel(cpbObj.type)} — pick a compatible unit` : "";
+
+  if (mismatch) {
+    el.textContent = "⚠ wrong unit";
+    el.title = mismatchTitle;
+    el.classList.remove("has-cost");
+    el.classList.add("mismatch");
+  } else {
+    const c = (row.ingId && row.qty) ? rowCost(row) : null;
+    el.textContent = c !== null ? fmt$(c) : "—";
+    el.title = "";
+    el.classList.toggle("has-cost", c !== null);
+    el.classList.remove("mismatch");
+  }
+  if (sel) {
+    sel.classList.toggle("mismatch", mismatch);
+    sel.title = mismatchTitle;
+  }
 }
 
 function onIhSearch(inp) {
@@ -1595,8 +1636,9 @@ function onIhSearch(inp) {
         if (cpb.type === "volume" && row.unit === "g") row.unit = "ml";
         if (cpb.type === "each") row.unit = "each";
       }
-      const sel = container.querySelector(`.ih-unit-sel[data-row="${rowId}"]`);
+      const sel = document.querySelector(`.ih-unit-sel[data-row="${rowId}"]`);
       if (sel) sel.value = row.unit;
+      updateIhRowCostCell(row);
       updateIhCost();
     });
   });
