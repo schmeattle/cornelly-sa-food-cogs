@@ -1969,7 +1969,7 @@ async function claudeSimplifyNames(names) {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
-      model: "claude-haiku-4-5-20251001",
+      model: "claude-haiku-5-5", output_config: { effort: "low" },
       max_tokens: 4096,
       messages: [{ role: "user", content: [{ type: "text", text: prompt }] }],
     }),
@@ -1979,7 +1979,7 @@ async function claudeSimplifyNames(names) {
     throw new Error(err.error?.message || `API error ${resp.status}`);
   }
   const data = await resp.json();
-  const raw = data.content[0].text.trim();
+  const raw = data.content.find(b => b.type === 'text').text.trim();
   const arr = JSON.parse(raw.replace(/^```json\n?|```$/g, "").trim());
   if (!Array.isArray(arr) || arr.length !== names.length) throw new Error("Unexpected response shape from Claude");
   return arr;
@@ -2063,7 +2063,7 @@ async function processInvoiceFile(file) {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        model: "claude-haiku-4-5-20251001",
+        model: "claude-haiku-5-5", output_config: { effort: "low" },
         max_tokens: 4096,
         messages: [{ role: "user", content: [contentBlock, { type: "text", text: INVOICE_PROMPT }] }],
       }),
@@ -2076,7 +2076,7 @@ async function processInvoiceFile(file) {
 
     document.getElementById("invoice-processing-msg").textContent = "Parsing results…";
     const data = await resp.json();
-    const raw = data.content[0].text.trim();
+    const raw = data.content.find(b => b.type === 'text').text.trim();
     const parsed = JSON.parse(raw.replace(/^```json\n?|```$/g, "").trim());
 
     renderInvoiceResults(parsed, file.name, parsed.invoiceDate || null);
